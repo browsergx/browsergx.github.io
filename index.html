@@ -21,7 +21,7 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        /* Header calibrado */
+        /* Header minimalista */
         header {
             background-color: #121212;
             border-bottom: 1px solid rgba(255, 255, 255, 0.08);
@@ -64,19 +64,7 @@
         .nav-links {
             display: flex;
             align-items: center;
-            gap: 20px;
-        }
-
-        .nav-links a.text-link {
-            color: #ffffff;
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 600;
-            transition: opacity 0.2s;
-        }
-
-        .nav-links a.text-link:hover {
-            opacity: 0.8;
+            gap: 16px;
         }
 
         .btn-download-nav {
@@ -98,25 +86,6 @@
             background-color: #e41e45;
         }
 
-        .btn-login {
-            border: 1px solid rgba(254, 44, 85, 0.65);
-            color: #fe2c55;
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 600;
-            height: 36px;
-            padding: 0 26px;
-            border-radius: 18px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            transition: background-color 0.2s;
-        }
-
-        .btn-login:hover {
-            background-color: rgba(254, 44, 85, 0.1);
-        }
-
         .menu-dots {
             background: none;
             border: none;
@@ -136,7 +105,7 @@
             align-items: center;
             justify-content: center;
             text-align: center;
-            padding: 40px 20px 60px;
+            padding: 50px 20px 60px;
         }
 
         h1 {
@@ -146,16 +115,15 @@
             line-height: 1.08;
             max-width: 960px;
             letter-spacing: -1.8px;
-            margin-bottom: 30px;
+            margin-bottom: 34px;
         }
 
         .cta-container {
             display: flex;
             flex-direction: column;
             align-items: center;
+            width: 100%;
             margin-bottom: 20px;
-            min-height: 80px;
-            justify-content: center;
         }
 
         /* Botón de Descarga Principal */
@@ -194,103 +162,89 @@
             font-weight: 400;
         }
 
-        /* Buscador integrado para BrowserGX */
-        .browsergx-search-box {
-            display: none; /* Oculto por defecto, se activa por JS si detecta BrowserGX */
+        /* Diseño Legítimo de Buscador de Google (Modo Oscuro Oficial) */
+        .google-search-container {
+            display: none; /* Oculto por defecto hasta detectar BrowserGX */
+            flex-direction: column;
             align-items: center;
-            background-color: #121212;
-            border: 1px solid rgba(254, 44, 85, 0.6);
-            border-radius: 30px;
-            width: 460px;
-            max-width: 90vw;
-            height: 56px;
+            width: 100%;
+            max-width: 584px;
+        }
+
+        .google-search-bar {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            height: 46px;
+            background-color: #202124;
+            border: 1px solid #5f6368;
+            border-radius: 24px;
             padding: 0 16px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
-            transition: border-color 0.2s;
+            transition: background-color 0.15s, box-shadow 0.15s, border-color 0.15s;
         }
 
-        .browsergx-search-box:focus-within {
-            border-color: #fe2c55;
+        .google-search-bar:hover,
+        .google-search-bar:focus-within {
+            background-color: #303134;
+            border-color: rgba(223, 225, 229, 0);
+            box-shadow: 0 1px 6px rgba(0, 0, 0, 0.6);
         }
 
-        .browsergx-search-input {
+        .google-search-icon {
+            width: 20px;
+            height: 20px;
+            fill: #9aa0a6;
+            margin-right: 12px;
+            flex-shrink: 0;
+        }
+
+        .google-search-input {
             flex: 1;
             background: transparent;
             border: none;
-            color: #ffffff;
+            color: #e8eaed;
+            font-family: Arial, sans-serif;
             font-size: 16px;
             outline: none;
-            padding-left: 10px;
+            height: 100%;
         }
 
-        .browsergx-search-input::placeholder {
-            color: #8a8a8a;
-        }
-
-        .browsergx-search-btn {
-            background: #fe2c55;
-            border: none;
-            color: #ffffff;
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            cursor: pointer;
+        .google-tools-icons {
             display: flex;
             align-items: center;
-            justify-content: center;
-            transition: background-color 0.2s;
-        }
-
-        .browsergx-search-btn:hover {
-            background: #e41e45;
-        }
-
-        .browsergx-search-btn svg {
-            width: 16px;
-            height: 16px;
-            fill: #ffffff;
-        }
-
-        /* Enlaces extras inferiores */
-        .extra-links {
-            margin-top: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-wrap: wrap;
             gap: 12px;
-            font-size: 14.5px;
-            color: #e6e6e6;
-            font-weight: 500;
+            margin-left: 8px;
         }
 
-        .apple-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            color: #e6e6e6;
-            text-decoration: none;
-            transition: opacity 0.2s;
+        .google-tools-icons svg {
+            width: 22px;
+            height: 22px;
+            cursor: pointer;
         }
 
-        .apple-link:hover { opacity: 0.8; }
-
-        .apple-icon {
-            width: 15px;
-            height: 15px;
-            fill: currentColor;
-            margin-top: -3px;
+        .google-buttons {
+            display: flex;
+            gap: 12px;
+            margin-top: 26px;
         }
 
-        .divider { color: rgba(255, 255, 255, 0.28); margin: 0 2px; }
-
-        .access-link {
-            color: #ffffff;
-            font-weight: 700;
-            text-decoration: none;
-            margin-left: 4px;
+        .google-btn {
+            background-color: #303134;
+            border: 1px solid #303134;
+            border-radius: 4px;
+            color: #e8eaed;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            padding: 0 16px;
+            height: 36px;
+            cursor: pointer;
+            transition: border-color 0.15s, box-shadow 0.15s;
         }
-        .access-link:hover { text-decoration: underline; }
+
+        .google-btn:hover {
+            border: 1px solid #5f6368;
+            box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+        }
 
         /* Sección de Anuncios Dinámicos */
         .ads-section {
@@ -421,7 +375,6 @@
             .ad-card__image { flex-basis: auto; height: 180px; }
             .ad-card__content { padding: 16px; }
             header { padding: 0 20px; }
-            .nav-links a.text-link, .btn-login { display: none; }
         }
     </style>
 </head>
@@ -436,16 +389,16 @@
         </a>
 
         <div class="nav-links">
-            <a href="#" class="btn-download-nav">Descargar</a>
+            <a href="#" id="nav-download-btn" class="btn-download-nav">Descargar</a>
             <button class="menu-dots" aria-label="Menú">⋮</button>
         </div>
     </header>
 
     <main>
-        <h1>Construye la experiencia<br>web definitiva</h1>
+        <h1 id="hero-title">Construye la experiencia<br>web definitiva</h1>
         
         <div class="cta-container">
-            <!-- Botón de Descarga (Visible por defecto en otros navegadores) -->
+            <!-- Botón de Descarga (Visible cuando NO es BrowserGX) -->
             <div id="download-wrapper" style="display: flex; flex-direction: column; align-items: center;">
                 <a href="#" class="btn-download-main">
                     <svg class="win-icon" viewBox="0 0 88 88">
@@ -456,21 +409,31 @@
                 <span class="subtext">Solo compatible con Windows 10 y superior de 64 bits</span>
             </div>
 
-            <!-- Buscador de Google (Aparece automáticamente si se navega desde BrowserGX) -->
-            <form id="browsergx-search-wrapper" class="browsergx-search-box" action="https://www.google.com/search" method="GET" target="_blank">
-                <svg style="width: 20px; height: 20px; fill: #8a8a8a; margin-left: 4px;" viewBox="0 0 24 24">
-                    <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
-                </svg>
-                <input type="text" name="q" class="browsergx-search-input" placeholder="Buscar en Google con BrowserGX..." autocomplete="off">
-                <button type="submit" class="browsergx-search-btn" aria-label="Buscar">
-                    <svg viewBox="0 0 24 24">
-                        <path d="M2 12h20M12 2l10 10-10 10"/>
+            <!-- Buscador Legítimo de Google (Visible cuando SE DETECTA BrowserGX) -->
+            <form id="google-search-wrapper" class="google-search-container" action="https://www.google.com/search" method="GET">
+                <div class="google-search-bar">
+                    <svg class="google-search-icon" viewBox="0 0 24 24">
+                        <path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
                     </svg>
-                </button>
+                    <input type="text" name="q" class="google-search-input" placeholder="Buscar en Google o escribir una URL" autocomplete="off" autofocus>
+                    
+                    <div class="google-tools-icons">
+                        <!-- Icono de Micrófono clásico de Google -->
+                        <svg viewBox="0 0 24 24">
+                            <path fill="#4285f4" d="m12 15c1.66 0 3-1.31 3-2.97v-7.02c0-1.66-1.34-3.01-3-3.01s-3 1.34-3 3.01v7.02c0 1.66 1.34 2.97 3 2.97z"/>
+                            <path fill="#34a853" d="m11 18.08h2v3.92h-2z"/>
+                            <path fill="#fbbc05" d="m7.05 16.87c-1.27-1.33-2.05-2.83-2.05-4.87h2c0 1.45 0.56 2.42 1.47 3.38v0.32l-1.15 1.18z"/>
+                            <path fill="#ea4335" d="m12 16.93a4.97 5.25 0 0 1 -3.54 -1.55l-1.41 1.49c1.26 1.34 3.02 2.13 4.95 2.13 3.87 0 6.99-2.92 6.99-7h-1.99c0 2.92-2.24 4.93-5 4.93z"/>
+                        </svg>
+                    </div>
+                </div>
+
+                <div class="google-buttons">
+                    <button type="submit" class="google-btn">Buscar con Google</button>
+                    <button type="submit" name="btnI" value="1" class="google-btn">Voy a tener suerte</button>
+                </div>
             </form>
         </div>
-
-        
 
         <!-- Sección de Anuncios Dinámicos cargados desde ads.txt -->
         <section class="ads-section">
@@ -482,20 +445,32 @@
     </main>
 
     <script>
-        // Detección automática del navegador BrowserGX
         document.addEventListener('DOMContentLoaded', () => {
             const userAgent = navigator.userAgent;
-            if (userAgent.includes('BrowserGX')) {
+            
+            // Detectar si el usuario navega desde BrowserGX
+            if (userAgent.includes('BrowserGX') || userAgent.includes('BrowserGX.com')) {
+                const heroTitle = document.getElementById('hero-title');
                 const downloadWrapper = document.getElementById('download-wrapper');
-                const searchWrapper = document.getElementById('browsergx-search-wrapper');
+                const navDownloadBtn = document.getElementById('nav-download-btn');
+                const googleSearchWrapper = document.getElementById('google-search-wrapper');
                 
-                if (downloadWrapper && searchWrapper) {
-                    downloadWrapper.style.display = 'none';
-                    searchWrapper.style.display = 'flex';
+                // Cambiar título principal
+                if (heroTitle) {
+                    heroTitle.textContent = 'BrowserGX Search';
+                }
+
+                // Ocultar botones de descarga
+                if (downloadWrapper) downloadWrapper.style.display = 'none';
+                if (navDownloadBtn) navDownloadBtn.style.display = 'none';
+                
+                // Mostrar buscador estilo Google
+                if (googleSearchWrapper) {
+                    googleSearchWrapper.style.display = 'flex';
                 }
             }
 
-            // Carga y renderizado dinámico de ads.txt
+            // Cargar los anuncios desde ads.txt
             loadAds();
         });
 
