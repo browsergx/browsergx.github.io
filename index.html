@@ -4,65 +4,151 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- SEO Principal Dinámico -->
-    <title id="meta-title">BrowserGX - Gaming Web Browser, Buy Games & Best Deals</title>
-    <meta id="meta-desc" name="description" content="Download BrowserGX, the ultimate gaming web browser. Extreme performance, CPU/RAM limiter, free giveaways, and instant access to buy games with exclusive deals.">
-    <meta name="keywords" content="BrowserGX, gaming browser, web browser, buy games, free games, gaming deals, fast web browser, download BrowserGX">
-    <meta name="robots" content="index, follow">
+    <!-- SEO principal -->
+    <title id="meta-title">BrowserGX | Gaming Browser for Windows</title>
+    <meta id="meta-desc" name="description" content="Download BrowserGX, a gaming browser for Windows with CPU and RAM controls, fast browsing, and gaming deals in one place.">
+    <meta name="author" content="BrowserGX">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="theme-color" content="#000000">
 
-    <!-- Schema.org Structured Data (JSON-LD) -->
-    <script type="application/ld+json">
+    <!-- Structured data: organization, website, landing page, and software -->
+    <script id="structured-data" type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
-      "name": "BrowserGX",
-      "operatingSystem": "Windows 10, Windows 11",
-      "applicationCategory": "BrowserApplication",
-      "description": "The ultimate gaming web browser featuring CPU and RAM limiters, built-in gaming deals, and extreme browsing performance.",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "USD"
-      },
-      "publisher": {
-        "@type": "Organization",
-        "name": "BrowserGX"
-      }
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://browsergx.github.io/#organization",
+          "name": "BrowserGX",
+          "url": "https://browsergx.github.io/",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://browsergx.github.io/BrowserGX-logo.jpg"
+          }
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://browsergx.github.io/#website",
+          "url": "https://browsergx.github.io/",
+          "name": "BrowserGX",
+          "publisher": { "@id": "https://browsergx.github.io/#organization" },
+          "inLanguage": "en"
+        },
+        {
+          "@type": "WebPage",
+          "@id": "https://browsergx.github.io/#webpage",
+          "url": "https://browsergx.github.io/",
+          "name": "BrowserGX | Gaming Browser for Windows",
+          "description": "Download BrowserGX, a gaming browser for Windows with CPU and RAM controls, fast browsing, and gaming deals in one place.",
+          "isPartOf": { "@id": "https://browsergx.github.io/#website" },
+          "about": { "@id": "https://browsergx.github.io/#software" },
+          "mainEntity": { "@id": "https://browsergx.github.io/#software" },
+          "inLanguage": "en",
+          "primaryImageOfPage": {
+            "@type": "ImageObject",
+            "url": "https://browsergx.github.io/BrowserGX-logo.jpg"
+          }
+        },
+        {
+          "@type": "SoftwareApplication",
+          "@id": "https://browsergx.github.io/#software",
+          "name": "BrowserGX",
+          "url": "https://browsergx.github.io/",
+          "image": "https://browsergx.github.io/BrowserGX-logo.jpg",
+          "description": "A Windows web browser for gamers, with CPU and RAM controls, fast browsing, and access to gaming deals.",
+          "applicationCategory": "BrowserApplication",
+          "operatingSystem": "Windows 10 64-bit or later",
+          "isAccessibleForFree": true,
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD",
+            "url": "https://browsergx.github.io/",
+            "availability": "https://schema.org/InStock"
+          },
+          "publisher": { "@id": "https://browsergx.github.io/#organization" }
+        }
+      ]
     }
     </script>
 
-    <!-- Open Graph / Discord / Facebook / WhatsApp -->
+    <!-- Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="BrowserGX">
     <meta property="og:url" content="https://browsergx.github.io/">
-    <meta id="og-title" property="og:title" content="BrowserGX - Gaming Web Browser, Buy Games & Best Deals">
-    <meta id="og-desc" property="og:description" content="Download BrowserGX, the ultimate gaming web browser. Extreme speed, resource control, and exclusive gaming deals.">
+    <meta id="og-locale" property="og:locale" content="en_US">
+    <meta id="og-title" property="og:title" content="BrowserGX | Gaming Browser for Windows">
+    <meta id="og-desc" property="og:description" content="Download BrowserGX, a gaming browser for Windows with CPU and RAM controls, fast browsing, and gaming deals in one place.">
     <meta property="og:image" content="https://browsergx.github.io/BrowserGX-logo.jpg">
-    <meta property="og:image:alt" content="BrowserGX Web Browser Logo">
+    <meta property="og:image:alt" content="BrowserGX gaming web browser">
 
-    <!-- Twitter Cards -->
+    <!-- X (Twitter) card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:url" content="https://browsergx.github.io/">
-    <meta id="twitter-title" name="twitter:title" content="BrowserGX - Gaming Web Browser, Buy Games & Best Deals">
-    <meta id="twitter-desc" name="twitter:description" content="Download BrowserGX, the ultimate gaming web browser. Extreme speed, resource control, and exclusive gaming deals.">
+    <meta id="twitter-title" name="twitter:title" content="BrowserGX | Gaming Browser for Windows">
+    <meta id="twitter-desc" name="twitter:description" content="Download BrowserGX, a gaming browser for Windows with CPU and RAM controls, fast browsing, and gaming deals in one place.">
     <meta name="twitter:image" content="https://browsergx.github.io/BrowserGX-logo.jpg">
 
     <!-- Idiomas disponibles en BrowserGX -->
-    <link rel="canonical" href="https://browsergx.github.io/" />
+    <link id="canonical-link" rel="canonical" href="https://browsergx.github.io/" />
     <link rel="alternate" hreflang="x-default" href="https://browsergx.github.io/" />
+    <link rel="alternate" hreflang="az" href="https://browsergx.github.io/?lang=az" />
+    <link rel="alternate" hreflang="id-ID" href="https://browsergx.github.io/?lang=id-ID" />
+    <link rel="alternate" hreflang="ms-MY" href="https://browsergx.github.io/?lang=ms-MY" />
+    <link rel="alternate" hreflang="jv-ID" href="https://browsergx.github.io/?lang=jv-ID" />
+    <link rel="alternate" hreflang="ca" href="https://browsergx.github.io/?lang=ca" />
+    <link rel="alternate" hreflang="ceb-PH" href="https://browsergx.github.io/?lang=ceb-PH" />
+    <link rel="alternate" hreflang="cs-CZ" href="https://browsergx.github.io/?lang=cs-CZ" />
+    <link rel="alternate" hreflang="da" href="https://browsergx.github.io/?lang=da" />
+    <link rel="alternate" hreflang="de-DE" href="https://browsergx.github.io/?lang=de-DE" />
+    <link rel="alternate" hreflang="et" href="https://browsergx.github.io/?lang=et" />
+    <link rel="alternate" hreflang="en-GB" href="https://browsergx.github.io/?lang=en-GB" />
     <link rel="alternate" hreflang="en" href="https://browsergx.github.io/?lang=en" />
     <link rel="alternate" hreflang="es" href="https://browsergx.github.io/?lang=es" />
-    <link rel="alternate" hreflang="ja" href="https://browsergx.github.io/?lang=ja" />
+    <link rel="alternate" hreflang="es-419" href="https://browsergx.github.io/?lang=es-419" />
+    <link rel="alternate" hreflang="fil-PH" href="https://browsergx.github.io/?lang=fil-PH" />
     <link rel="alternate" hreflang="fr" href="https://browsergx.github.io/?lang=fr" />
-    <link rel="alternate" hreflang="it" href="https://browsergx.github.io/?lang=it" />
-    <link rel="alternate" hreflang="de" href="https://browsergx.github.io/?lang=de" />
-    <link rel="alternate" hreflang="pl" href="https://browsergx.github.io/?lang=pl" />
+    <link rel="alternate" hreflang="fr-CA" href="https://browsergx.github.io/?lang=fr-CA" />
+    <link rel="alternate" hreflang="ga" href="https://browsergx.github.io/?lang=ga" />
+    <link rel="alternate" hreflang="hr" href="https://browsergx.github.io/?lang=hr" />
+    <link rel="alternate" hreflang="is" href="https://browsergx.github.io/?lang=is" />
+    <link rel="alternate" hreflang="it-IT" href="https://browsergx.github.io/?lang=it-IT" />
+    <link rel="alternate" hreflang="sw" href="https://browsergx.github.io/?lang=sw" />
+    <link rel="alternate" hreflang="lv" href="https://browsergx.github.io/?lang=lv" />
+    <link rel="alternate" hreflang="lt" href="https://browsergx.github.io/?lang=lt" />
+    <link rel="alternate" hreflang="hu-HU" href="https://browsergx.github.io/?lang=hu-HU" />
+    <link rel="alternate" hreflang="nl-NL" href="https://browsergx.github.io/?lang=nl-NL" />
+    <link rel="alternate" hreflang="nb" href="https://browsergx.github.io/?lang=nb" />
+    <link rel="alternate" hreflang="uz" href="https://browsergx.github.io/?lang=uz" />
+    <link rel="alternate" hreflang="pl-PL" href="https://browsergx.github.io/?lang=pl-PL" />
     <link rel="alternate" hreflang="pt" href="https://browsergx.github.io/?lang=pt" />
     <link rel="alternate" hreflang="pt-BR" href="https://browsergx.github.io/?lang=pt-BR" />
-    <link rel="alternate" hreflang="ru" href="https://browsergx.github.io/?lang=ru" />
-    <link rel="alternate" hreflang="tr" href="https://browsergx.github.io/?lang=tr" />
+    <link rel="alternate" hreflang="ro-RO" href="https://browsergx.github.io/?lang=ro-RO" />
+    <link rel="alternate" hreflang="sq" href="https://browsergx.github.io/?lang=sq" />
+    <link rel="alternate" hreflang="sk" href="https://browsergx.github.io/?lang=sk" />
+    <link rel="alternate" hreflang="sl" href="https://browsergx.github.io/?lang=sl" />
+    <link rel="alternate" hreflang="fi-FI" href="https://browsergx.github.io/?lang=fi-FI" />
+    <link rel="alternate" hreflang="sv-SE" href="https://browsergx.github.io/?lang=sv-SE" />
+    <link rel="alternate" hreflang="vi-VN" href="https://browsergx.github.io/?lang=vi-VN" />
+    <link rel="alternate" hreflang="tr-TR" href="https://browsergx.github.io/?lang=tr-TR" />
+    <link rel="alternate" hreflang="el-GR" href="https://browsergx.github.io/?lang=el-GR" />
+    <link rel="alternate" hreflang="bg" href="https://browsergx.github.io/?lang=bg" />
+    <link rel="alternate" hreflang="kk" href="https://browsergx.github.io/?lang=kk" />
+    <link rel="alternate" hreflang="ru-RU" href="https://browsergx.github.io/?lang=ru-RU" />
+    <link rel="alternate" hreflang="uk-UA" href="https://browsergx.github.io/?lang=uk-UA" />
+    <link rel="alternate" hreflang="he-IL" href="https://browsergx.github.io/?lang=he-IL" />
+    <link rel="alternate" hreflang="ur" href="https://browsergx.github.io/?lang=ur" />
+    <link rel="alternate" hreflang="ar" href="https://browsergx.github.io/?lang=ar" />
+    <link rel="alternate" hreflang="hi-IN" href="https://browsergx.github.io/?lang=hi-IN" />
+    <link rel="alternate" hreflang="bn-IN" href="https://browsergx.github.io/?lang=bn-IN" />
+    <link rel="alternate" hreflang="th-TH" href="https://browsergx.github.io/?lang=th-TH" />
+    <link rel="alternate" hreflang="my-MM" href="https://browsergx.github.io/?lang=my-MM" />
+    <link rel="alternate" hreflang="km-KH" href="https://browsergx.github.io/?lang=km-KH" />
+    <link rel="alternate" hreflang="ja-JP" href="https://browsergx.github.io/?lang=ja-JP" />
+    <link rel="alternate" hreflang="zh-Hant-TW" href="https://browsergx.github.io/?lang=zh-Hant-TW" />
     <link rel="alternate" hreflang="zh-Hans" href="https://browsergx.github.io/?lang=zh-Hans" />
-    <link rel="alternate" hreflang="zh-Hant" href="https://browsergx.github.io/?lang=zh-Hant" />
+    <link rel="alternate" hreflang="ko-KR" href="https://browsergx.github.io/?lang=ko-KR" />
 
     <!-- Favicons -->
     <link rel="icon" type="image/x-icon" href="./favicon/favicon.ico">
@@ -594,19 +680,62 @@
 
     <footer>
         <div class="language-selector" aria-label="Language" data-i18n-aria-label="language_label">
+            <a href="?lang=az">Azərbaycanca</a>
+            <a href="?lang=id-ID">Bahasa Indonesia</a>
+            <a href="?lang=ms-MY">Bahasa Melayu</a>
+            <a href="?lang=jv-ID">Basa Jawa</a>
+            <a href="?lang=ca">Català</a>
+            <a href="?lang=ceb-PH">Cebuano</a>
+            <a href="?lang=cs-CZ">Čeština</a>
+            <a href="?lang=da">Dansk</a>
+            <a href="?lang=de-DE">Deutsch</a>
+            <a href="?lang=et">Eesti</a>
+            <a href="?lang=en-GB">English (UK)</a>
             <a href="?lang=en">English</a>
             <a href="?lang=es">Español</a>
-            <a href="?lang=ja">日本語</a>
+            <a href="?lang=es-419">Español (Latinoamérica)</a>
+            <a href="?lang=fil-PH">Filipino</a>
             <a href="?lang=fr">Français</a>
-            <a href="?lang=it">Italiano</a>
-            <a href="?lang=de">Deutsch</a>
-            <a href="?lang=pl">Polski</a>
+            <a href="?lang=fr-CA">Français (Canada)</a>
+            <a href="?lang=ga">Gaeilge</a>
+            <a href="?lang=hr">Hrvatski</a>
+            <a href="?lang=is">Íslenska</a>
+            <a href="?lang=it-IT">Italiano</a>
+            <a href="?lang=sw">Kiswahili</a>
+            <a href="?lang=lv">Latviešu</a>
+            <a href="?lang=lt">Lietuvių</a>
+            <a href="?lang=hu-HU">Magyar</a>
+            <a href="?lang=nl-NL">Nederlands</a>
+            <a href="?lang=nb">Norsk (bokmål)</a>
+            <a href="?lang=uz">Oʻzbekcha</a>
+            <a href="?lang=pl-PL">Polski</a>
             <a href="?lang=pt">Português</a>
             <a href="?lang=pt-BR">Português (Brasil)</a>
-            <a href="?lang=ru">Русский</a>
-            <a href="?lang=tr">Türkçe</a>
+            <a href="?lang=ro-RO">Română</a>
+            <a href="?lang=sq">Shqip</a>
+            <a href="?lang=sk">Slovenčina</a>
+            <a href="?lang=sl">Slovenščina</a>
+            <a href="?lang=fi-FI">Suomi</a>
+            <a href="?lang=sv-SE">Svenska</a>
+            <a href="?lang=vi-VN">Tiếng Việt</a>
+            <a href="?lang=tr-TR">Türkçe</a>
+            <a href="?lang=el-GR">Ελληνικά</a>
+            <a href="?lang=bg">Български</a>
+            <a href="?lang=kk">Қазақша</a>
+            <a href="?lang=ru-RU">Русский</a>
+            <a href="?lang=uk-UA">Українська</a>
+            <a href="?lang=he-IL">עברית</a>
+            <a href="?lang=ur">اردو</a>
+            <a href="?lang=ar">العربية</a>
+            <a href="?lang=hi-IN">हिन्दी</a>
+            <a href="?lang=bn-IN">বাংলা</a>
+            <a href="?lang=th-TH">ไทย</a>
+            <a href="?lang=my-MM">မြန်မာဘာသာ</a>
+            <a href="?lang=km-KH">ភាសាខ្មែរ</a>
+            <a href="?lang=ja-JP">日本語</a>
+            <a href="?lang=zh-Hant-TW">中文 (繁體)</a>
             <a href="?lang=zh-Hans">中文 (简体)</a>
-            <a href="?lang=zh-Hant">中文 (繁體)</a>
+            <a href="?lang=ko-KR">한국어</a>
         </div>
     </footer>
 
@@ -614,8 +743,8 @@
         // Diccionario completo con las traducciones oficiales para cada idioma solicitado
         const translations = {
             "x-default": {
-                seo_title: "BrowserGX - Gaming Web Browser, Buy Games & Best Deals",
-                seo_desc: "Download BrowserGX, the ultimate gaming web browser. Extreme performance, CPU/RAM limiter, free giveaways, and instant access to buy games with exclusive deals.",
+                seo_title: "BrowserGX | Gaming Browser for Windows",
+                seo_desc: "Download BrowserGX, a gaming browser for Windows with CPU and RAM controls, fast browsing, and gaming deals in one place.",
                 badge_browser: "Gaming Browser",
                 btn_download: "Download",
                 hero_title: "The ultimate gaming<br>web browser",
@@ -634,8 +763,8 @@
                 seo_block_desc: "BrowserGX is engineered from the ground up for PC gamers and power users. Featuring built-in CPU, RAM, and Network limiters, it allows you to play heavy video games while streaming or browsing without lag. Discover the best tools to buy games at discount prices, track free game giveaways, and enjoy lightning-fast performance on Windows 10 and Windows 11."
             },
             "en": {
-                seo_title: "BrowserGX - Gaming Web Browser, Buy Games & Best Deals",
-                seo_desc: "Download BrowserGX, the ultimate gaming web browser. Extreme performance, CPU/RAM limiter, free giveaways, and instant access to buy games with exclusive deals.",
+                seo_title: "BrowserGX | Gaming Browser for Windows",
+                seo_desc: "Download BrowserGX, a gaming browser for Windows with CPU and RAM controls, fast browsing, and gaming deals in one place.",
                 badge_browser: "Gaming Browser",
                 btn_download: "Download",
                 hero_title: "The ultimate gaming<br>web browser",
@@ -654,8 +783,8 @@
                 seo_block_desc: "BrowserGX is engineered from the ground up for PC gamers and power users. Featuring built-in CPU, RAM, and Network limiters, it allows you to play heavy video games while streaming or browsing without lag. Discover the best tools to buy games at discount prices, track free game giveaways, and enjoy lightning-fast performance on Windows 10 and Windows 11."
             },
             "en-GB": {
-                seo_title: "BrowserGX - Gaming Web Browser, Buy Games & Best Deals",
-                seo_desc: "Download BrowserGX, the ultimate gaming web browser. Extreme performance, CPU/RAM limiter, free giveaways, and instant access to buy games with exclusive deals.",
+                seo_title: "BrowserGX | Gaming Browser for Windows",
+                seo_desc: "Download BrowserGX, a gaming browser for Windows with CPU and RAM controls, fast browsing, and gaming deals in one place.",
                 badge_browser: "Gaming Browser",
                 btn_download: "Download",
                 hero_title: "The ultimate gaming<br>web browser",
@@ -1055,33 +1184,89 @@
             }
         };
 
+        const additionalLanguageData = {
+            "az": ["Oyun brauzeri, oyunlar və sərfəli təkliflər", "Oyunçular üçün yüksək performans, CPU/RAM resurslarına nəzarət və oyunlar üçün xüsusi təkliflər.", "Oyun brauzeri", "Yüklə", "Ən yaxşı oyun", "veb brauzeri", "BrowserGX-də axtar", "Windows üçün yüklə", "Yalnız 64-bit Windows 10 və daha yeni versiyalarla uyğundur", "Google-da axtarın və ya URL yazın", "Google-da axtar", "Bəxtimi sınayıram", "Oyun təklifləri, oyunlar və sponsorlar", "REKLAM", "Veb-sayta bax", "Hazırda reklam yoxdur.", "Niyə əsas oyun brauzeriniz kimi BrowserGX-i seçməlisiniz?", "Menyu", "Dil"],
+            "ms-MY": ["Pelayar permainan, permainan dan tawaran hebat", "Prestasi hebat untuk pemain, kawalan CPU/RAM dan akses terus kepada permainan serta tawaran eksklusif.", "Pelayar Permainan", "Muat turun", "Pelayar web", "permainan terbaik", "Cari dengan BrowserGX", "Muat turun untuk Windows", "Hanya serasi dengan Windows 10 64-bit dan ke atas", "Cari di Google atau taip URL", "Carian Google", "Saya rasa bertuah", "Tawaran permainan dan penaja", "IKLAN", "Lawati laman web", "Tiada iklan tersedia buat masa ini.", "Mengapa memilih BrowserGX sebagai pelayar permainan utama?", "Menu", "Bahasa"],
+            "jv-ID": ["Browser web game lan tawaran paling apik", "Kinerja dhuwur kanggo para pemain, kontrol CPU/RAM, lan akses menyang game lan tawaran khusus.", "Browser Game", "Undhuh", "Browser web", "game paling apik", "Goleki nganggo BrowserGX", "Undhuh kanggo Windows", "Mung kompatibel karo Windows 10 64-bit lan versi luwih anyar", "Telusuri Google utawa ketik URL", "Telusuri Google", "Aku lagi beja", "Tawaran game lan sponsor", "IKLAN", "Bukak situs web", "Saiki durung ana iklan.", "Napa milih BrowserGX minangka browser game utama?", "Menu", "Basa"],
+            "ca": ["Navegador per a jocs, jocs i les millors ofertes", "Rendiment excepcional per a jugadors, control de CPU/RAM i accés directe a jocs i ofertes exclusives.", "Navegador per a jocs", "Baixa", "El navegador web", "definitiu per a jocs", "Cerca amb BrowserGX", "Baixa per a Windows", "Només compatible amb Windows 10 de 64 bits i versions posteriors", "Cerca a Google o escriu una URL", "Cerca amb Google", "Tinc sort", "Ofertes de jocs i patrocinadors", "ANUNCI", "Visita el lloc web", "Ara mateix no hi ha anuncis disponibles.", "Per què triar BrowserGX com a navegador principal per a jocs?", "Menú", "Idioma"],
+            "ceb-PH": ["Gaming browser, mga dula ug maayong tanyag", "Kusog nga performance para sa mga gamer, kontrol sa CPU/RAM, ug direktang access sa mga dula ug eksklusibong tanyag.", "Gaming Browser", "I-download", "Ang labing maayong", "web browser para sa dula", "Pangitaa gamit ang BrowserGX", "I-download para sa Windows", "Para lamang sa 64-bit Windows 10 pataas", "Pangitaa sa Google o isulat ang URL", "Google Search", "Suwerte ko", "Mga tanyag sa dula ug mga sponsor", "ANUNSYO", "Bisitaha ang website", "Walay anunsyo karon.", "Nganong pilion ang BrowserGX isip pangunang gaming browser?", "Menu", "Pinulongan"],
+            "cs-CZ": ["Herní prohlížeč, hry a skvělé nabídky", "Vysoký výkon pro hráče, ovládání CPU/RAM a přímý přístup ke hrám a exkluzivním nabídkám.", "Herní prohlížeč", "Stáhnout", "Špičkový webový", "prohlížeč pro hráče", "Hledat přes BrowserGX", "Stáhnout pro Windows", "Pouze pro 64bitový systém Windows 10 a novější", "Hledat na Googlu nebo zadat URL", "Hledat Googlem", "Zkusím štěstí", "Herní nabídky a sponzoři", "REKLAMA", "Navštívit web", "Momentálně nejsou k dispozici žádné reklamy.", "Proč zvolit BrowserGX jako hlavní herní prohlížeč?", "Nabídka", "Jazyk"],
+            "da": ["Gamingbrowser, spil og gode tilbud", "Høj ydeevne til gamere, styring af CPU/RAM og direkte adgang til spil og eksklusive tilbud.", "Gamingbrowser", "Download", "Den ultimative", "gaming-webbrowser", "Søg med BrowserGX", "Download til Windows", "Kun kompatibel med 64-bit Windows 10 og nyere", "Søg på Google eller indtast en URL", "Google-søgning", "Jeg føler mig heldig", "Gamingtilbud og sponsorer", "ANNONCE", "Besøg websted", "Der er ingen annoncer lige nu.", "Hvorfor vælge BrowserGX som din primære gamingbrowser?", "Menu", "Sprog"],
+            "et": ["Mänguribrauser, mängud ja parimad pakkumised", "Suur jõudlus mänguritele, protsessori ja mälu juhtimine ning ligipääs mängudele ja eripakkumistele.", "Mänguribrauser", "Laadi alla", "Parim mängude", "veebibrauser", "Otsi BrowserGX-iga", "Laadi alla Windowsile", "Ühildub ainult 64-bitise Windows 10 ja uuemaga", "Otsi Google'ist või sisesta URL", "Google'i otsing", "Mul veab", "Mängupakkumised ja sponsorid", "REKLAAM", "Külasta veebisaiti", "Reklaame pole praegu saadaval.", "Miks valida BrowserGX peamiseks mänguribrauseriks?", "Menüü", "Keel"],
+            "fil-PH": ["Gaming browser, mga laro at pinakamagagandang deal", "Napakahusay na performance para sa mga gamer, kontrol sa CPU/RAM, at direktang access sa mga laro at eksklusibong deal.", "Gaming Browser", "I-download", "Ang pinakamahusay na", "web browser para sa gaming", "Maghanap gamit ang BrowserGX", "I-download para sa Windows", "Para lamang sa 64-bit Windows 10 pataas", "Maghanap sa Google o mag-type ng URL", "Google Search", "Mapalad ako", "Mga gaming deal at sponsor", "AD", "Bisitahin ang website", "Walang available na ad sa ngayon.", "Bakit piliin ang BrowserGX bilang pangunahing gaming browser?", "Menu", "Wika"],
+            "ga": ["Brabhsálaí cluichíochta, cluichí agus margaí iontacha", "Feidhmíocht den scoth do lucht cluichíochta, rialú LAP/cuimhne agus rochtain ar chluichí agus ar mhargaí eisiacha.", "Brabhsálaí cluichíochta", "Íoslódáil", "An brabhsálaí gréasáin", "cluichíochta is fearr", "Cuardaigh le BrowserGX", "Íoslódáil do Windows", "Comhoiriúnach le Windows 10 64-giotán agus níos nuaí amháin", "Cuardaigh Google nó cuir URL isteach", "Cuardach Google", "Tá an t-ádh liom", "Margaí cluichí agus urraitheoirí", "FÓGRA", "Tabhair cuairt ar an suíomh", "Níl aon fhógraí ar fáil faoi láthair.", "Cén fáth BrowserGX a roghnú mar do phríomhbhrabhsálaí cluichíochta?", "Roghchlár", "Teanga"],
+            "hr": ["Preglednik za igre, igre i najbolje ponude", "Vrhunske performanse za igrače, kontrola CPU-a/RAM-a te izravan pristup igrama i ekskluzivnim ponudama.", "Preglednik za igre", "Preuzmi", "Vrhunski web", "preglednik za igre", "Pretraži uz BrowserGX", "Preuzmi za Windows", "Podržava samo 64-bitni Windows 10 i novije verzije", "Pretraži Google ili upiši URL", "Google pretraživanje", "Osjećam se sretno", "Ponude za igre i sponzori", "OGLAS", "Posjeti web-stranicu", "Trenutačno nema dostupnih oglasa.", "Zašto odabrati BrowserGX kao glavni preglednik za igre?", "Izbornik", "Jezik"],
+            "is": ["Leikjav vafri, leikir og frábær tilboð", "Frábær afköst fyrir spilara, stjórn á CPU/vinnsluminni og beinn aðgangur að leikjum og sértilboðum.", "Leikjavafri", "Sækja", "Fullkomni leikja", "vefvafrinn", "Leita með BrowserGX", "Sækja fyrir Windows", "Aðeins samhæft við 64-bita Windows 10 og nýrri", "Leita á Google eða slá inn vefslóð", "Google leit", "Mér finnst ég heppinn", "Leikjatilboð og styrktaraðilar", "AUGLÝSING", "Heimsækja vefsvæði", "Engar auglýsingar eru í boði eins og er.", "Af hverju að velja BrowserGX sem aðalleikjavafrann?", "Valmynd", "Tungumál"],
+            "sw": ["Kivinjari wa michezo, michezo na ofa bora", "Utendaji wa hali ya juu kwa wachezaji, udhibiti wa CPU/RAM na ufikiaji wa michezo na ofa maalum.", "Kivinjari cha Michezo", "Pakua", "Kivinjari bora", "cha michezo", "Tafuta kwa BrowserGX", "Pakua kwa Windows", "Inaoana na Windows 10 ya biti 64 na matoleo mapya pekee", "Tafuta Google au uandike URL", "Tafuta Google", "Nina bahati", "Ofa za michezo na wafadhili", "TANGAZO", "Tembelea tovuti", "Hakuna matangazo kwa sasa.", "Kwa nini uchague BrowserGX kama kivinjari chako kikuu cha michezo?", "Menyu", "Lugha"],
+            "lv": ["Spēļu pārlūks, spēles un labākie piedāvājumi", "Izcila veiktspēja spēlētājiem, CPU/RAM kontrole un tieša piekļuve spēlēm un īpašiem piedāvājumiem.", "Spēļu pārlūks", "Lejupielādēt", "Labākais spēļu", "tīmekļa pārlūks", "Meklēt ar BrowserGX", "Lejupielādēt Windows", "Saderīgs tikai ar 64 bitu Windows 10 un jaunākām versijām", "Meklēt Google vai ievadīt URL", "Google meklēšana", "Man veicas", "Spēļu piedāvājumi un sponsori", "REKLĀMA", "Apmeklēt vietni", "Pašlaik nav pieejamu reklāmu.", "Kāpēc izvēlēties BrowserGX par savu galveno spēļu pārlūku?", "Izvēlne", "Valoda"],
+            "lt": ["Žaidimų naršyklė, žaidimai ir geriausi pasiūlymai", "Didelis našumas žaidėjams, procesoriaus ir RAM valdymas bei tiesioginė prieiga prie žaidimų ir išskirtinių pasiūlymų.", "Žaidimų naršyklė", "Atsisiųsti", "Geriausia žaidimų", "žiniatinklio naršyklė", "Ieškoti su BrowserGX", "Atsisiųsti „Windows“", "Suderinama tik su 64 bitų „Windows 10“ ir naujesnėmis versijomis", "Ieškoti „Google“ arba įvesti URL", "„Google“ paieška", "Man sekasi", "Žaidimų pasiūlymai ir rėmėjai", "SKELBIMAS", "Apsilankyti svetainėje", "Šiuo metu skelbimų nėra.", "Kodėl verta rinktis BrowserGX kaip pagrindinę žaidimų naršyklę?", "Meniu", "Kalba"],
+            "hu-HU": ["Játékböngésző, játékok és remek ajánlatok", "Kiemelkedő teljesítmény játékosoknak, CPU/RAM-szabályozás, valamint játékok és exkluzív ajánlatok közvetlen elérése.", "Játékböngésző", "Letöltés", "A tökéletes", "játékböngésző", "Keresés a BrowserGX-szel", "Letöltés Windowsra", "Csak 64 bites Windows 10 vagy újabb rendszeren használható", "Google-keresés vagy URL megadása", "Google-keresés", "Szerencsésnek érzem magam", "Játékajánlatok és támogatók", "HIRDETÉS", "Webhely megnyitása", "Jelenleg nincs elérhető hirdetés.", "Miért válaszd a BrowserGX-et elsődleges játékböngészőként?", "Menü", "Nyelv"],
+            "nl-NL": ["Gamingbrowser, games en de beste aanbiedingen", "Uitstekende prestaties voor gamers, CPU/RAM-beheer en directe toegang tot games en exclusieve aanbiedingen.", "Gamingbrowser", "Downloaden", "De ultieme", "gamingwebbrowser", "Zoeken met BrowserGX", "Downloaden voor Windows", "Alleen geschikt voor 64-bits Windows 10 en hoger", "Zoek met Google of typ een URL", "Google Zoeken", "Ik doe een gok", "Gamingaanbiedingen en sponsors", "ADVERTENTIE", "Website bezoeken", "Er zijn momenteel geen advertenties beschikbaar.", "Waarom BrowserGX kiezen als je belangrijkste gamingbrowser?", "Menu", "Taal"],
+            "nb": ["Spillnettleser, spill og gode tilbud", "Høy ytelse for spillere, kontroll over CPU/RAM og direkte tilgang til spill og eksklusive tilbud.", "Spillnettleser", "Last ned", "Den ultimate", "spillnettleseren", "Søk med BrowserGX", "Last ned for Windows", "Bare kompatibel med 64-biters Windows 10 og nyere", "Søk på Google eller skriv inn en URL", "Google-søk", "Prøv lykken", "Spilltilbud og sponsorer", "ANNONSE", "Besøk nettstedet", "Ingen annonser er tilgjengelige akkurat nå.", "Hvorfor velge BrowserGX som din primære spillnettleser?", "Meny", "Språk"],
+            "uz": ["O‘yin brauzeri, o‘yinlar va eng yaxshi takliflar", "O‘yinchilar uchun yuqori unumdorlik, CPU/RAM nazorati hamda o‘yinlar va maxsus takliflarga to‘g‘ridan-to‘g‘ri kirish.", "O‘yin brauzeri", "Yuklab olish", "Eng yaxshi o‘yin", "veb-brauzeri", "BrowserGX orqali qidirish", "Windows uchun yuklab olish", "Faqat 64-bit Windows 10 va undan yangilari bilan mos", "Google’dan qidiring yoki URL kiriting", "Google qidiruvi", "Omadimni sinab ko‘raman", "O‘yin takliflari va homiylar", "REKLAMA", "Veb-saytga o‘tish", "Hozircha reklamalar mavjud emas.", "Nega BrowserGX’ni asosiy o‘yin brauzeri sifatida tanlash kerak?", "Menyu", "Til"],
+            "ro-RO": ["Browser pentru jocuri, jocuri și oferte excelente", "Performanță ridicată pentru jucători, control CPU/RAM și acces direct la jocuri și oferte exclusive.", "Browser pentru jocuri", "Descarcă", "Browserul web", "suprem pentru jocuri", "Caută cu BrowserGX", "Descarcă pentru Windows", "Compatibil numai cu Windows 10 pe 64 de biți și versiunile ulterioare", "Caută pe Google sau introdu o adresă URL", "Căutare Google", "Mă simt norocos", "Oferte de jocuri și sponsori", "PUBLICITATE", "Vizitează site-ul", "Nu există anunțuri disponibile momentan.", "De ce să alegi BrowserGX ca browser principal pentru jocuri?", "Meniu", "Limbă"],
+            "sq": ["Shfletues lojërash, lojëra dhe oferta të shkëlqyera", "Performancë e lartë për lojtarët, kontroll i CPU/RAM dhe qasje e drejtpërdrejtë te lojërat dhe ofertat ekskluzive.", "Shfletues lojërash", "Shkarko", "Shfletuesi më i mirë", "i lojërave", "Kërko me BrowserGX", "Shkarko për Windows", "Përputhet vetëm me Windows 10 64-bit dhe versionet më të reja", "Kërko në Google ose shkruaj një URL", "Kërko në Google", "Ndihem me fat", "Oferta lojërash dhe sponsorë", "REKLAMË", "Vizito faqen", "Nuk ka reklama të disponueshme tani.", "Pse të zgjedhësh BrowserGX si shfletuesin kryesor të lojërave?", "Menyja", "Gjuha"],
+            "sk": ["Herný prehliadač, hry a skvelé ponuky", "Vysoký výkon pre hráčov, ovládanie CPU/RAM a priamy prístup k hrám a exkluzívnym ponukám.", "Herný prehliadač", "Stiahnuť", "Dokonalý webový", "prehliadač pre hráčov", "Hľadať cez BrowserGX", "Stiahnuť pre Windows", "Kompatibilný iba so 64-bitovým systémom Windows 10 a novším", "Hľadať na Googli alebo zadať URL", "Vyhľadávanie Google", "Skúsim šťastie", "Herné ponuky a sponzori", "REKLAMA", "Navštíviť web", "Momentálne nie sú dostupné žiadne reklamy.", "Prečo si vybrať BrowserGX ako hlavný herný prehliadač?", "Ponuka", "Jazyk"],
+            "sl": ["Igralni brskalnik, igre in odlične ponudbe", "Odlična zmogljivost za igralce, nadzor CPU/RAM ter neposreden dostop do iger in posebnih ponudb.", "Igralni brskalnik", "Prenesi", "Vrhunski spletni", "brskalnik za igre", "Išči z BrowserGX", "Prenesi za Windows", "Podprta sta samo 64-bitni Windows 10 in novejše različice", "Išči v Googlu ali vnesi URL", "Iskanje Google", "Počutim se srečnega", "Ponudbe za igre in sponzorji", "OGLAS", "Obišči spletno mesto", "Trenutno ni oglasov.", "Zakaj izbrati BrowserGX za glavni igralni brskalnik?", "Meni", "Jezik"],
+            "fi-FI": ["Pel selain, pelit ja parhaat tarjoukset", "Huippusuorituskyky pelaajille, CPU/RAM-hallinta sekä suora pääsy peleihin ja ainutlaatuisiin tarjouksiin.", "Pel selain", "Lataa", "Paras pelien", "verkkoselain", "Hae BrowserGX:llä", "Lataa Windowsille", "Yhteensopiva vain 64-bittisen Windows 10:n ja uudempien kanssa", "Hae Googlesta tai kirjoita URL-osoite", "Google-haku", "Kokeilen onneani", "Pelitarjoukset ja sponsorit", "MAINOS", "Siirry verkkosivustolle", "Mainoksia ei ole tällä hetkellä saatavilla.", "Miksi valita BrowserGX ensisijaiseksi peliselaimeksi?", "Valikko", "Kieli"],
+            "sv-SE": ["Spelwebbläsare, spel och de bästa erbjudandena", "Hög prestanda för spelare, CPU/RAM-kontroll och direkt åtkomst till spel och exklusiva erbjudanden.", "Spelwebbläsare", "Ladda ner", "Den ultimata", "spelwebbläsaren", "Sök med BrowserGX", "Ladda ner för Windows", "Endast kompatibel med 64-bitars Windows 10 och senare", "Sök på Google eller ange en webbadress", "Google-sökning", "Jag har tur", "Spelerbjudanden och sponsorer", "ANNONS", "Besök webbplatsen", "Det finns inga annonser just nu.", "Varför välja BrowserGX som din främsta spelwebbläsare?", "Meny", "Språk"],
+            "el-GR": ["Πρόγραμμα περιήγησης για παιχνίδια και κορυφαίες προσφορές", "Υψηλές επιδόσεις για παίκτες, έλεγχος CPU/RAM και άμεση πρόσβαση σε παιχνίδια και αποκλειστικές προσφορές.", "Πρόγραμμα περιήγησης παιχνιδιών", "Λήψη", "Το απόλυτο πρόγραμμα", "περιήγησης για παιχνίδια", "Αναζήτηση με BrowserGX", "Λήψη για Windows", "Συμβατό μόνο με Windows 10 64-bit και νεότερες εκδόσεις", "Αναζήτηση στο Google ή πληκτρολόγηση URL", "Αναζήτηση Google", "Νιώθω τυχερός", "Προσφορές παιχνιδιών και χορηγοί", "ΔΙΑΦΗΜΙΣΗ", "Επισκεφθείτε τον ιστότοπο", "Δεν υπάρχουν διαθέσιμες διαφημίσεις αυτήν τη στιγμή.", "Γιατί να επιλέξετε το BrowserGX ως κύριο πρόγραμμα περιήγησης παιχνιδιών;", "Μενού", "Γλώσσα"],
+            "bg": ["Гейминг браузър, игри и страхотни оферти", "Висока производителност за геймъри, контрол на CPU/RAM и директен достъп до игри и ексклузивни оферти.", "Гейминг браузър", "Изтегляне", "Най-добрият", "браузър за игри", "Търсене с BrowserGX", "Изтегляне за Windows", "Съвместим само с 64-битов Windows 10 и по-нова версия", "Търсене в Google или въвеждане на URL адрес", "Търсене в Google", "Чувствам се късметлия", "Оферти за игри и спонсори", "РЕКЛАМА", "Посетете уебсайта", "В момента няма налични реклами.", "Защо да изберете BrowserGX за основен браузър за игри?", "Меню", "Език"],
+            "kk": ["Ойын браузері, ойындар және тиімді ұсыныстар", "Ойыншыларға арналған жоғары өнімділік, CPU/RAM басқаруы және ойындар мен арнайы ұсыныстарға тікелей қолжетімділік.", "Ойын браузері", "Жүктеп алу", "Ойынға арналған", "үздік веб-браузер", "BrowserGX арқылы іздеу", "Windows үшін жүктеп алу", "Тек 64 биттік Windows 10 және одан кейінгі нұсқалармен үйлесімді", "Google-дан іздеңіз немесе URL енгізіңіз", "Google іздеуі", "Бағымды сынап көремін", "Ойын ұсыныстары мен демеушілер", "ЖАРНАМА", "Веб-сайтқа өту", "Қазір жарнамалар қолжетімді емес.", "Неліктен BrowserGX-ті негізгі ойын браузері ретінде таңдау керек?", "Мәзір", "Тіл"],
+            "uk-UA": ["Ігровий браузер, ігри та найкращі пропозиції", "Висока продуктивність для гравців, керування CPU/RAM і прямий доступ до ігор та ексклюзивних пропозицій.", "Ігровий браузер", "Завантажити", "Найкращий веббраузер", "для ігор", "Шукати в BrowserGX", "Завантажити для Windows", "Сумісний лише з 64-бітною Windows 10 і новішими версіями", "Шукати в Google або ввести URL-адресу", "Пошук Google", "Мені пощастить", "Ігрові пропозиції та спонсори", "РЕКЛАМА", "Відвідати вебсайт", "Наразі немає доступної реклами.", "Чому варто вибрати BrowserGX як основний ігровий браузер?", "Меню", "Мова"],
+            "he-IL": ["דפדפן משחקים, משחקים והמבצעים הטובים ביותר", "ביצועים מעולים לגיימרים, שליטה ב-CPU/RAM וגישה ישירה למשחקים ולהצעות בלעדיות.", "דפדפן משחקים", "הורדה", "דפדפן המשחקים", "האולטימטיבי", "חיפוש באמצעות BrowserGX", "הורדה ל-Windows", "תואם ל-Windows 10 בגרסת 64 סיביות ומעלה בלבד", "חיפוש ב-Google או הקלדת כתובת URL", "חיפוש Google", "אני מרגיש בר מזל", "מבצעי משחקים ונותני חסות", "מודעה", "ביקור באתר", "אין כרגע מודעות זמינות.", "למה לבחור ב-BrowserGX כדפדפן המשחקים הראשי שלך?", "תפריט", "שפה"],
+            "ur": ["گیمنگ براؤزر، گیمز اور بہترین آفرز", "گیمرز کے لیے بہترین کارکردگی، CPU/RAM پر مکمل کنٹرول، اور گیمز و خصوصی آفرز تک براہِ راست رسائی۔", "گیمنگ براؤزر", "ڈاؤن لوڈ کریں", "بہترین گیمنگ", "ویب براؤزر", "BrowserGX سے تلاش کریں", "Windows کے لیے ڈاؤن لوڈ کریں", "صرف 64-bit Windows 10 اور اس سے نئے ورژنز کے لیے", "Google پر تلاش کریں یا URL لکھیں", "Google تلاش", "میں خوش قسمت ہوں", "گیمنگ آفرز اور اسپانسرز", "اشتہار", "ویب سائٹ دیکھیں", "اس وقت کوئی اشتہار دستیاب نہیں۔", "اپنے بنیادی گیمنگ براؤزر کے طور پر BrowserGX کیوں منتخب کریں؟", "مینو", "زبان"],
+            "bn-IN": ["গেমিং ব্রাউজার, গেম ও সেরা অফার", "গেমারদের জন্য দ্রুত কর্মক্ষমতা, CPU/RAM নিয়ন্ত্রণ এবং গেম ও বিশেষ অফারে সরাসরি প্রবেশ।", "গেমিং ব্রাউজার", "ডাউনলোড", "সেরা গেমিং", "ওয়েব ব্রাউজার", "BrowserGX দিয়ে খুঁজুন", "Windows-এর জন্য ডাউনলোড", "শুধু ৬৪-বিট Windows 10 বা পরবর্তী সংস্করণে চলে", "Google-এ খুঁজুন অথবা URL লিখুন", "Google অনুসন্ধান", "আমি ভাগ্যবান", "গেমিং অফার ও স্পনসর", "বিজ্ঞাপন", "ওয়েবসাইট দেখুন", "এখন কোনো বিজ্ঞাপন নেই।", "প্রধান গেমিং ব্রাউজার হিসেবে BrowserGX কেন বেছে নেবেন?", "মেনু", "ভাষা"],
+            "th-TH": ["เบราว์เซอร์เกม เกม และข้อเสนอสุดคุ้ม", "ประสิทธิภาพสูงสำหรับเกมเมอร์ ควบคุม CPU/RAM ได้ และเข้าถึงเกมกับข้อเสนอพิเศษได้โดยตรง", "เบราว์เซอร์เกม", "ดาวน์โหลด", "เว็บเบราว์เซอร์", "เกมที่เหนือกว่า", "ค้นหาด้วย BrowserGX", "ดาวน์โหลดสำหรับ Windows", "รองรับเฉพาะ Windows 10 รุ่น 64 บิตขึ้นไป", "ค้นหาใน Google หรือพิมพ์ URL", "ค้นหา Google", "ดีจัง ฉันรู้สึกโชคดี", "ข้อเสนอเกมและผู้สนับสนุน", "โฆษณา", "เยี่ยมชมเว็บไซต์", "ขณะนี้ไม่มีโฆษณา", "ทำไมควรเลือก BrowserGX เป็นเบราว์เซอร์เกมหลัก?", "เมนู", "ภาษา"],
+            "my-MM": ["ဂိမ်းဘရောက်ဇာ၊ ဂိမ်းများနှင့် အထူးလျှော့ဈေးများ", "ဂိမ်းကစားသူများအတွက် မြန်ဆန်သောစွမ်းဆောင်ရည်၊ CPU/RAM ထိန်းချုပ်မှုနှင့် ဂိမ်းများ၊ အထူးအစီအစဉ်များကို တိုက်ရိုက်ရယူနိုင်မှု။", "ဂိမ်းဘရောက်ဇာ", "ဒေါင်းလုဒ်", "အကောင်းဆုံးဂိမ်း", "ဝဘ်ဘရောက်ဇာ", "BrowserGX ဖြင့် ရှာဖွေပါ", "Windows အတွက် ဒေါင်းလုဒ်", "64-bit Windows 10 နှင့် အထက်တွင်သာ အသုံးပြုနိုင်သည်", "Google တွင်ရှာပါ သို့မဟုတ် URL ရိုက်ပါ", "Google ရှာဖွေမှု", "ကံကောင်းပါစေ", "ဂိမ်းအစီအစဉ်များနှင့် ပံ့ပိုးသူများ", "ကြော်ငြာ", "ဝဘ်ဆိုက်သို့ သွားရန်", "လောလောဆယ် ကြော်ငြာမရှိပါ။", "အဓိကဂိမ်းဘရောက်ဇာအဖြစ် BrowserGX ကို ဘာကြောင့်ရွေးချယ်သင့်သလဲ?", "မီနူး", "ဘာသာစကား"],
+            "km-KH": ["កម្មវិធីរុករកហ្គេម ហ្គេម និងការផ្តល់ជូនល្អៗ", "ដំណើរការខ្ពស់សម្រាប់អ្នកលេងហ្គេម គ្រប់គ្រង CPU/RAM និងចូលប្រើហ្គេមនិងការផ្តល់ជូនពិសេសដោយផ្ទាល់។", "កម្មវិធីរុករកហ្គេម", "ទាញយក", "កម្មវិធីរុករក", "ហ្គេមដ៏អស្ចារ្យ", "ស្វែងរកជាមួយ BrowserGX", "ទាញយកសម្រាប់ Windows", "ប្រើបានតែជាមួយ Windows 10 64-bit និងកំណែថ្មីជាងនេះ", "ស្វែងរកក្នុង Google ឬបញ្ចូល URL", "ស្វែងរក Google", "ខ្ញុំមានសំណាង", "ការផ្តល់ជូនហ្គេម និងអ្នកឧបត្ថម្ភ", "ការផ្សាយពាណិជ្ជកម្ម", "ចូលមើលគេហទំព័រ", "បច្ចុប្បន្នមិនមានការផ្សាយពាណិជ្ជកម្មទេ។", "ហេតុអ្វីត្រូវជ្រើស BrowserGX ជាកម្មវិធីរុករកហ្គេមចម្បង?", "ម៉ឺនុយ", "ភាសា"]
+        };
+
+        const additionalTranslationKeys = ["seo_title", "seo_desc", "badge_browser", "btn_download", "hero_title", "hero_subtitle", "hero_title_gx", "btn_download_win", "sub_win_compat", "search_placeholder", "btn_google_search", "btn_lucky", "ads_section_title", "ad_badge", "ad_button", "ads_error", "seo_block_title", "menu_label", "language_label"];
+        Object.entries(additionalLanguageData).forEach(([language, values]) => {
+            if (values.length !== additionalTranslationKeys.length) {
+                throw new Error(`Invalid translation data for ${language}`);
+            }
+            translations[language] = Object.fromEntries(additionalTranslationKeys.map((key, index) => [key, values[index]]));
+            translations[language].seo_title = `BrowserGX - ${values[0]}`;
+            translations[language].seo_desc = values[1];
+            translations[language].hero_title = `${values[4]}<br>${values[5]}`;
+            translations[language].hero_subtitle = values[1];
+            translations[language].seo_block_desc = values[1];
+        });
+
+        translations["pl-PL"] = translations["pl"];
         translations["ja"] = translations["ja-JP"];
         translations["de"] = translations["de-DE"];
         translations["it"] = translations["it-IT"];
         translations["ru"] = translations["ru-RU"];
         translations["tr"] = translations["tr-TR"];
         translations["zh-Hant"] = translations["zh-Hant-TW"];
+        translations["pl-PL"].menu_label = "Menu";
+        translations["pl-PL"].language_label = "Język";
 
-        const supportedLanguages = ["en", "es", "ja", "fr", "it", "de", "pl", "pt", "pt-BR", "ru", "tr", "zh-Hans", "zh-Hant"];
         const languageAliases = {
-            "en-GB": "en", "es-419": "es", "fr-CA": "fr", "de-DE": "de", "it-IT": "it",
-            "pl-PL": "pl", "pt-PT": "pt", "ru-RU": "ru", "tr-TR": "tr", "ja-JP": "ja",
-            "zh-CN": "zh-Hans", "zh-SG": "zh-Hans", "zh-TW": "zh-Hant", "zh-HK": "zh-Hant",
-            "zh-MO": "zh-Hant", "zh-Hant-TW": "zh-Hant"
+            "en-GB": "en", "es-419": "es-419", "fr-CA": "fr-CA", "de-DE": "de-DE", "it-IT": "it-IT",
+            "pl-PL": "pl-PL", "pt-PT": "pt", "pt-BR": "pt-BR", "ru-RU": "ru-RU", "tr-TR": "tr-TR",
+            "ja-JP": "ja-JP", "zh-CN": "zh-Hans", "zh-SG": "zh-Hans", "zh-TW": "zh-Hant-TW",
+            "zh-HK": "zh-Hant-TW", "zh-MO": "zh-Hant-TW", "zh-Hant-TW": "zh-Hant-TW"
         };
 
         function normalizeLanguage(language) {
             if (!language) return null;
             const normalized = language.replaceAll("_", "-");
+            const exact = Object.keys(translations).find(item => item.toLowerCase() === normalized.toLowerCase());
+            if (exact && exact !== "x-default") return exact;
             const alias = Object.keys(languageAliases).find(key => key.toLowerCase() === normalized.toLowerCase());
             if (alias) return languageAliases[alias];
-            const exact = supportedLanguages.find(item => item.toLowerCase() === normalized.toLowerCase());
-            if (exact) return exact;
             if (normalized.toLowerCase().startsWith("zh-")) {
-                return /zh-(hant|tw|hk|mo)/i.test(normalized) ? "zh-Hant" : "zh-Hans";
+                return /zh-(hant|tw|hk|mo)/i.test(normalized) ? "zh-Hant-TW" : "zh-Hans";
             }
             const primary = normalized.split("-")[0].toLowerCase();
-            return supportedLanguages.find(item => item.toLowerCase() === primary) || null;
+            const primaryMatch = Object.keys(translations).find(item => item.toLowerCase() === primary);
+            if (primaryMatch && primaryMatch !== "x-default") return primaryMatch;
+            const regionalMatch = Object.keys(translations).find(item => item.toLowerCase().split("-")[0] === primary);
+            return regionalMatch && regionalMatch !== "x-default" ? regionalMatch : null;
         }
 
         document.addEventListener('DOMContentLoaded', () => {
@@ -1092,15 +1277,8 @@
                 : [navigator.language || navigator.userLanguage || 'en'];
             const browserLang = browserLanguages.map(normalizeLanguage).find(Boolean);
             const activeLang = queryLang || browserLang || 'en';
-            const translationKey = activeLang === 'ja' ? 'ja-JP'
-                : activeLang === 'de' ? 'de-DE'
-                : activeLang === 'it' ? 'it-IT'
-                : activeLang === 'ru' ? 'ru-RU'
-                : activeLang === 'tr' ? 'tr-TR'
-                : activeLang === 'zh-Hant' ? 'zh-Hant-TW'
-                : activeLang;
-            const t = translations[activeLang] || translations[translationKey] || translations['en'];
-            const localizedLabels = {
+            const t = translations[activeLang] || translations['en'];
+            const localizedLabelCatalog = {
                 en: { menu: "Menu", language: "Language", search: "Search with BrowserGX" },
                 es: { menu: "Menú", language: "Idioma", search: "Buscar con BrowserGX" },
                 ja: { menu: "メニュー", language: "言語", search: "BrowserGX で検索" },
@@ -1113,26 +1291,64 @@
                 ru: { menu: "Меню", language: "Язык", search: "Поиск в BrowserGX" },
                 tr: { menu: "Menü", language: "Dil", search: "BrowserGX ile ara" },
                 "zh-Hans": { menu: "菜单", language: "语言", search: "使用 BrowserGX 搜索" },
-                "zh-Hant": { menu: "選單", language: "語言", search: "使用 BrowserGX 搜尋" }
-            }[activeLang];
+                "zh-Hant": { menu: "選單", language: "語言", search: "使用 BrowserGX 搜尋" },
+                ar: { menu: "القائمة", language: "اللغة", search: "البحث باستخدام BrowserGX" },
+                id: { menu: "Menu", language: "Bahasa", search: "Cari dengan BrowserGX" },
+                vi: { menu: "Menu", language: "Ngôn ngữ", search: "Tìm kiếm với BrowserGX" },
+                hi: { menu: "मेनू", language: "भाषा", search: "BrowserGX से खोजें" },
+                ko: { menu: "메뉴", language: "언어", search: "BrowserGX에서 검색" }
+            };
+            const labelLanguage = activeLang === "zh-Hant-TW" ? "zh-Hant" : activeLang;
+            const labelBaseLanguage = activeLang.split("-")[0];
+            const localizedLabels = localizedLabelCatalog[labelLanguage] || localizedLabelCatalog[labelBaseLanguage] || {
+                menu: t.menu_label || "Menu",
+                language: t.language_label || "Language",
+                search: t.hero_title_gx
+            };
             t.menu_label = localizedLabels.menu;
             t.language_label = localizedLabels.language;
             t.hero_title_gx = localizedLabels.search;
 
             document.documentElement.lang = activeLang;
 
+            const siteUrl = "https://browsergx.github.io/";
+            const canonicalUrl = queryLang ? `${siteUrl}?lang=${encodeURIComponent(activeLang)}` : siteUrl;
             document.title = t.seo_title;
             const metaDesc = document.getElementById('meta-desc');
             const ogTitle = document.getElementById('og-title');
             const ogDesc = document.getElementById('og-desc');
+            const ogLocale = document.getElementById('og-locale');
+            const ogUrl = document.querySelector('meta[property="og:url"]');
             const twTitle = document.getElementById('twitter-title');
             const twDesc = document.getElementById('twitter-desc');
+            const twUrl = document.querySelector('meta[name="twitter:url"]');
+            const canonicalLink = document.getElementById('canonical-link');
 
             if (metaDesc) metaDesc.setAttribute('content', t.seo_desc);
             if (ogTitle) ogTitle.setAttribute('content', t.seo_title);
             if (ogDesc) ogDesc.setAttribute('content', t.seo_desc);
+            if (ogLocale) ogLocale.setAttribute('content', activeLang.replaceAll('-', '_'));
+            if (ogUrl) ogUrl.setAttribute('content', canonicalUrl);
             if (twTitle) twTitle.setAttribute('content', t.seo_title);
             if (twDesc) twDesc.setAttribute('content', t.seo_desc);
+            if (twUrl) twUrl.setAttribute('content', canonicalUrl);
+            if (canonicalLink) canonicalLink.setAttribute('href', canonicalUrl);
+
+            const structuredDataElement = document.getElementById('structured-data');
+            if (structuredDataElement) {
+                const structuredData = JSON.parse(structuredDataElement.textContent);
+                const webpage = structuredData['@graph'].find(item => item['@type'] === 'WebPage');
+                const website = structuredData['@graph'].find(item => item['@type'] === 'WebSite');
+                const application = structuredData['@graph'].find(item => item['@type'] === 'SoftwareApplication');
+                webpage['@id'] = `${canonicalUrl}#webpage`;
+                webpage.url = canonicalUrl;
+                webpage.name = t.seo_title;
+                webpage.description = t.seo_desc;
+                webpage.inLanguage = activeLang;
+                website.inLanguage = activeLang;
+                application.description = t.seo_desc;
+                structuredDataElement.textContent = JSON.stringify(structuredData);
+            }
 
             document.querySelectorAll('[data-i18n]').forEach(el => {
                 const key = el.getAttribute('data-i18n');
