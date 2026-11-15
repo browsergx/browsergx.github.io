@@ -1,1 +1,370 @@
-BrowserGX Welcome
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BrowserGX - Experimenta la web sin límites</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #000000;
+            color: #ffffff;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Header calibrado */
+        header {
+            background-color: #121212;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            height: 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 24px 0 84px;
+            width: 100%;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 800;
+            font-size: 22px;
+            letter-spacing: -0.5px;
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 22px;
+            height: 22px;
+            fill: #ffffff;
+        }
+
+        .logo-badge {
+            background-color: #fe2c55;
+            color: #ffffff;
+            padding: 3px 7px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.2px;
+            line-height: 1;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .nav-links a.text-link {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            transition: opacity 0.2s;
+        }
+
+        .nav-links a.text-link:hover {
+            opacity: 0.8;
+        }
+
+        .btn-download-nav {
+            background-color: #fe2c55;
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            height: 36px;
+            padding: 0 22px;
+            border-radius: 18px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.2s;
+        }
+
+        .btn-download-nav:hover {
+            background-color: #e41e45;
+        }
+
+        .btn-login {
+            border: 1px solid rgba(254, 44, 85, 0.65);
+            color: #fe2c55;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            height: 36px;
+            padding: 0 26px;
+            border-radius: 18px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.2s;
+        }
+
+        .btn-login:hover {
+            background-color: rgba(254, 44, 85, 0.1);
+        }
+
+        .menu-dots {
+            background: none;
+            border: none;
+            color: #ffffff;
+            font-size: 20px;
+            cursor: pointer;
+            padding: 4px 6px;
+            display: flex;
+            align-items: center;
+        }
+
+        /* Contenedor Principal */
+        main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 40px 20px 60px;
+        }
+
+        h1 {
+            color: #e6e6e6;
+            font-size: clamp(42px, 6.2vw, 76px);
+            font-weight: 700;
+            line-height: 1.08;
+            max-width: 960px;
+            letter-spacing: -1.8px;
+            margin-bottom: 30px;
+        }
+
+        .cta-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .btn-download-main {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            background-color: #fe2c55;
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 17px;
+            font-weight: 600;
+            width: 340px;
+            max-width: 90vw;
+            height: 56px;
+            border-radius: 28px;
+            transition: background-color 0.2s, transform 0.15s;
+        }
+
+        .btn-download-main:hover {
+            background-color: #e41e45;
+            transform: translateY(-1px);
+        }
+
+        .win-icon {
+            width: 22px;
+            height: 22px;
+            fill: currentColor;
+        }
+
+        .subtext {
+            color: #8a8a8a;
+            font-size: 13.5px;
+            margin-top: 14px;
+            font-weight: 400;
+        }
+
+        /* Sección de Anuncios Dinámicos cargados desde ads.txt */
+        .ads-section {
+            width: 100%;
+            max-width: 1100px;
+            margin-top: 60px;
+            text-align: left;
+        }
+
+        .ads-title {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #ffffff;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: 10px;
+        }
+
+        .ads-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 20px;
+        }
+
+        .ad-card {
+            background-color: #121212;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            text-decoration: none;
+            color: inherit;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .ad-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(254, 44, 85, 0.5);
+        }
+
+        .ad-image {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            background-color: #1a1a1a;
+        }
+
+        .ad-content {
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            flex: 1;
+        }
+
+        .ad-card-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: #ffffff;
+        }
+
+        .ad-card-desc {
+            font-size: 13px;
+            color: #9ca3af;
+            line-height: 1.4;
+            flex: 1;
+        }
+
+        .ad-card-link {
+            font-size: 12px;
+            font-weight: 600;
+            color: #fe2c55;
+            margin-top: 8px;
+        }
+
+        @media (max-width: 900px) {
+            header { padding: 0 20px; }
+            .nav-links a.text-link, .btn-login { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="#" class="logo-container">
+            <svg class="logo-icon" viewBox="0 0 24 24">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+            </svg>
+            BrowserGX <span class="logo-badge">Web Browser</span>
+        </a>
+
+        <div class="nav-links">
+            <a href="#" class="text-link">Centro de Ayuda</a>
+            <a href="#" class="btn-download-nav">Descargar</a>
+            <a href="#" class="btn-login">Iniciar sesión</a>
+            <button class="menu-dots" aria-label="Menú">⋮</button>
+        </div>
+    </header>
+
+    <main>
+        <h1>Construye la experiencia<br>web definitiva</h1>
+        
+        <div class="cta-container">
+            <a href="#" class="btn-download-main">
+                <svg class="win-icon" viewBox="0 0 88 88">
+                    <path d="M0 12.402l35.687-4.86v34.223H0V12.402zM39.68 6.96L87.5 0v41.765H39.68V6.96zM0 45.922h35.687v34.264L0 75.326V45.922zm39.68-.001H87.5V88l-47.82-6.721V45.921z"/>
+                </svg>
+                Descargar para Windows
+            </a>
+            <span class="subtext">Solo compatible con Windows 10 y superior de 64 bits</span>
+        </div>
+
+        <!-- Contenedor donde se cargarán los anuncios leídos desde ads.txt -->
+        <section class="ads-section">
+            <div class="ads-title">Anuncios y Patrocinadores Destacados</div>
+            <div id="ads-container" class="ads-grid">
+                <!-- Se llenará automáticamente con JavaScript -->
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Función para leer y parsear el archivo ads.txt estructurado con |
+        async function loadAds() {
+            try {
+                // Cambia la ruta si tu ads.txt está dentro de una carpeta, ej: './ads/ads.txt'
+                const response = await fetch('./ads/ads.txt');
+                if (!response.ok) throw new Error('No se pudo cargar el archivo ads.txt');
+                
+                const text = await response.text();
+                const lines = text.split('\n');
+                const container = document.getElementById('ads-container');
+                
+                container.innerHTML = ''; // Limpiar contenedor
+
+                lines.forEach(line => {
+                    const trimmedLine = line.trim();
+                    if (!trimmedLine) return; // Ignorar líneas vacías
+
+                    // Separar por el caracter pipe (|)
+                    const parts = trimmedLine.split('|');
+                    if (parts.length >= 4) {
+                        const url = parts[0].trim();
+                        const title = parts[1].trim();
+                        const description = parts[2].trim();
+                        const image = parts[3].trim();
+
+                        // Crear la tarjeta HTML para cada anuncio
+                        const card = document.createElement('a');
+                        card.href = url;
+                        card.target = '_blank';
+                        card.rel = 'noopener noreferrer';
+                        card.className = 'ad-card';
+
+                        card.innerHTML = `
+                            <img src="${image}" alt="${title}" class="ad-image" onerror="this.src='https://via.placeholder.com/320x160?text=BrowserGX+Ad'">
+                            <div class="ads-content ad-content">
+                                <div class="ad-card-title">${title}</div>
+                                <div class="ad-card-desc">${description}</div>
+                                <span class="ad-card-link">Visitar sitio &rarr;</span>
+                            </div>
+                        `;
+
+                        container.appendChild(card);
+                    }
+                });
+            } catch (error) {
+                console.error('Error cargando los anuncios:', error);
+                document.getElementById('ads-container').innerHTML = '<p style="color: #8a8a8a; grid-column: 1/-1;">No hay anuncios disponibles en este momento.</p>';
+            }
+        }
+
+        // Ejecutar al cargar la página
+        document.addEventListener('DOMContentLoaded', loadAds);
+    </script>
+</body>
+</html>
