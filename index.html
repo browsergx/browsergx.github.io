@@ -390,20 +390,33 @@
             .ad-card__content { padding: 16px; }
             header { padding: 0 20px; }
         }
-        /* Contenedor responsivo para el logo principal */
-.logo-hero-container {
-    width: 100%;
-    max-width: 320px; /* Tamaño máximo ideal en PC (puedes subirlo a 380px si lo quieres un poco más grande) */
-    margin: 0 auto 20px auto; /* Centrado automático y espacio inferior */
+/* Banner de punta a punta estilo perfil / portada */
+.profile-banner {
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    height: 320px; /* Altura ideal panorámica para PC */
+    overflow: hidden;
+    background-color: #0b0f19;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-.logo-hero-img {
-    display: block;
+.profile-banner img {
     width: 100%;
-    height: auto;
-    object-fit: contain;
-    border-radius: 16px; /* Opcional: le da un toque de bordes redondeados muy moderno */
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); /* Sombra sutil para que resalte */
+    height: 100%;
+    object-fit: cover; /* Asegura que cubra de esquina a esquina sin dejar espacios */
+    object-position: center;
+    display: block;
+}
+
+/* Ajuste responsivo para celulares y pantallas pequeñas */
+@media (max-width: 768px) {
+    .profile-banner {
+        height: 180px; /* Se adapta perfectamente en móviles */
+    }
 }
     </style>
 </head>
@@ -423,8 +436,8 @@
         </div>
     </header>
 
-    <main><div class="logo-hero-container">
-    <img src="BrowserGX-logo.jpg" alt="Browser GX Logo" class="logo-hero-img">
+    <main><div class="profile-banner">
+    <img src="BrowserGX-logo.jpg" alt="Browser GX Banner">
 </div>
         <h1 id="hero-title">Construye la experiencia<br>web definitiva</h1>
         
