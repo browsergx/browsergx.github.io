@@ -390,6 +390,21 @@
             .ad-card__content { padding: 16px; }
             header { padding: 0 20px; }
         }
+        /* Contenedor responsivo para el logo principal */
+.logo-hero-container {
+    width: 100%;
+    max-width: 320px; /* Tamaño máximo ideal en PC (puedes subirlo a 380px si lo quieres un poco más grande) */
+    margin: 0 auto 20px auto; /* Centrado automático y espacio inferior */
+}
+
+.logo-hero-img {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    border-radius: 16px; /* Opcional: le da un toque de bordes redondeados muy moderno */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); /* Sombra sutil para que resalte */
+}
     </style>
 </head>
 <body>
@@ -408,7 +423,9 @@
         </div>
     </header>
 
-    <main><img width="100%" src="BrowserGX-logo.jpg"><br>
+    <main><div class="logo-hero-container">
+    <img src="BrowserGX-logo.jpg" alt="Browser GX Logo" class="logo-hero-img">
+</div>
         <h1 id="hero-title">Construye la experiencia<br>web definitiva</h1>
         
         <div class="cta-container">
