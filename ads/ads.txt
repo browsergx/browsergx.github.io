@@ -1,2 +1,4 @@
-https://google.com|Titulo de Google|Descripcion de Google|
-https://habbo.es|Titulo de Habbo|Descripcion de Habbo|
+https://cldbt.cloud/r/browser/es|Titulo de Google|Descripcion de Google|
+https://roobet.com/?ref=browsers|Titulo de Google|Descripcion de Google|
+https://www.instant-gaming.com/?igr=browsers|Titulo de Google|Descripcion de Google|
+https://www.g2a.com/n/browser|Titulo de Google|Descripcion de Google|
