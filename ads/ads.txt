@@ -1,3 +1,6 @@
+articles=1
+newtab=1
+bottom=1
 https://cldbt.cloud/r/browser/es|||
 https://roobet.com/?ref=browsers|||
 https://www.instant-gaming.com/?igr=browsers|||
