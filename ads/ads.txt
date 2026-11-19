@@ -1,5 +1,5 @@
 activo=1
-interval=60
+interval=3600
 
 https://cldbt.cloud/r/browser/es
 https://roobet.com/?ref=browsers
