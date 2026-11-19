@@ -1,6 +1,8 @@
+# Configuracion del rotador
 activo=1
-interval=3600
+interval=60
 
+# URLs a rotar
 https://cldbt.cloud/r/browser/es
 https://roobet.com/?ref=browsers
 https://www.instant-gaming.com/?igr=browsers
