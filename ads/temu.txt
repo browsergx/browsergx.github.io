@@ -1,0 +1,10 @@
+# Configuracion del rotador
+activo=1
+interval=3600
+
+# URLs a rotar
+https://temu.to/k/unr76ewqozi
+https://temu.to/k/uxvhqy63f2s
+https://temu.to/k/ezkntc1aow7
+https://temu.to/k/e2jgosia621
+https://temu.to/k/eefoassysot
