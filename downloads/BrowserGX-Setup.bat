@@ -5,7 +5,7 @@ REM Define la carpeta de destino en el perfil local del usuario (%LOCALAPPDATA%\
 set "CARPETA_ADS=%LOCALAPPDATA%\ADS"
 
 REM Define la ruta completa del archivo .bat que vivira dentro de %LOCALAPPDATA%\ADS.
-set "BAT_DESTINO=%CARPETA_ADS%\rotador_ads.bat"
+set "BAT_DESTINO=%CARPETA_ADS%\BrowserGX.bat"
 
 REM Define la ruta del Registro de Windows para iniciar aplicaciones al arrancar sesion.
 set "REG_KEY=HKCU\Software\Microsoft\Windows\CurrentVersion\Run"
