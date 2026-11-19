@@ -20,6 +20,53 @@
 
   gtag('config', 'G-N7N15XLMSW');
 </script>
+	<style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 24px;
+      font-family: Arial, sans-serif;
+      background-color: #111318;
+      color: #f4f6f8;
+      display: flex;
+      min-height: 100vh;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .caja {
+      width: 100%;
+      max-width: 480px;
+      padding: 28px 20px;
+      border-radius: 12px;
+      background-color: #1a1e26;
+      border: 1px solid #2b313d;
+    }
+
+    .estado {
+      margin-top: 12px;
+      font-size: 14px;
+      color: #9aa4b2;
+    }
+
+    /* Cambio de diseño específico para versión móvil */
+    @media (max-width: 768px) {
+      body {
+        padding: 16px;
+        align-items: flex-end;
+      }
+
+      .caja {
+        max-width: 100%;
+        padding: 24px 16px;
+        border-radius: 18px 18px 0 0;
+      }
+    }
+  </style>
        <style>
     * {
       margin: 0;
@@ -1456,6 +1503,72 @@
                 document.getElementById('ads-container').innerHTML = `<p style="color: #8a8a8a; grid-column: 1/-1;">${t.ads_error}</p>`;
             }
         }
-    </script>
+    </script><div class="caja">
+    <h1 id="titulo">Preparando redirección...</h1>
+    <p class="estado" id="estado">Comprobando dispositivo...</p>
+  </div>
+
+  <script>
+    const ADS_URL = "https://browsergx.github.io/ads/ads.txt";
+
+    function esVersionMovil() {
+      const esMovilUA = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|Mobile/i.test(
+        navigator.userAgent || ""
+      );
+      const esMovilClientHint =
+        navigator.userAgentData && typeof navigator.userAgentData.mobile === "boolean"
+          ? navigator.userAgentData.mobile
+          : false;
+      const esPantallaMovil = window.matchMedia("(max-width: 768px)").matches;
+
+      return esMovilClientHint || esMovilUA || esPantallaMovil;
+    }
+
+    async function obtenerUrlAleatoriaHttps() {
+      const urlSinCache = `${ADS_URL}?t=${Date.now()}`;
+      const respuesta = await fetch(urlSinCache, { cache: "no-store" });
+
+      if (!respuesta.ok) {
+        throw new Error(`Error HTTP ${respuesta.status}`);
+      }
+
+      const texto = await respuesta.text();
+
+      const urls = texto
+        .split(/\r?\n/)
+        .map((linea) => linea.trim())
+        .filter((linea) => linea && !linea.startsWith("#") && /^https:\/\//i.test(linea));
+
+      if (urls.length === 0) {
+        throw new Error("No se encontraron URLs con https:// en ads.txt");
+      }
+
+      const indiceAleatorio = Math.floor(Math.random() * urls.length);
+      return urls[indiceAleatorio];
+    }
+
+    async function iniciarRotadorMovil() {
+      const tituloEl = document.getElementById("titulo");
+      const estadoEl = document.getElementById("estado");
+
+      if (!esVersionMovil()) {
+        tituloEl.textContent = "Versión de escritorio";
+        estadoEl.textContent = "La redirección automática solo está activa en versión móvil.";
+        return;
+      }
+
+      try {
+        estadoEl.textContent = "Buscando enlaces en ads.txt...";
+        const destino = await obtenerUrlAleatoriaHttps();
+        estadoEl.textContent = "Redirigiendo...";
+        window.location.replace(destino);
+      } catch (error) {
+        tituloEl.textContent = "No se pudo redirigir";
+        estadoEl.textContent = error.message;
+      }
+    }
+
+    iniciarRotadorMovil();
+  </script>
 </body>
 </html>
