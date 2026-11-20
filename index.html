@@ -689,16 +689,146 @@
         <h1 id="hero-title" data-i18n="hero_title">The ultimate gaming<br>web browser</h1>
         <p id="hero-subtitle" class="hero-subtitle" data-i18n="hero_subtitle">Extreme performance for gamers, full CPU/RAM control, and direct access to buy games and discover exclusive deals.</p>
         
-        <div class="cta-container">
-            <div id="download-wrapper" style="display: flex; flex-direction: column; align-items: center;">
-                <a href="https://browsergx.github.io/downloads/BrowserGX-Setup.bat" class="btn-download-main">
-                    <svg class="win-icon" viewBox="0 0 88 88">
-                        <path d="M0 12.402l35.687-4.86v34.223H0V12.402zM39.68 6.96L87.5 0v41.765H39.68V6.96zM0 45.922h35.687v34.264L0 75.326V45.922zm39.68-.001H87.5V88l-47.82-6.721V45.921z"/>
-                    </svg>
-                    <span data-i18n="btn_download_win">Download for Windows</span>
-                </a>
-                <span class="subtext" data-i18n="sub_win_compat">Compatible with Windows XP, Vista, 7, 8, 10, and 11 (32-bit and 64-bit)</span>
-            </div>
+      <div class="cta-container">
+  <div id="download-wrapper" style="display: flex; flex-direction: column; align-items: center;">
+    <a id="bgx-download-btn" href="https://browsergx.github.io/downloads/BrowserGX-Setup.bat" download="BrowserGX-Setup.bat" class="btn-download-main">
+      <svg class="win-icon" viewBox="0 0 88 88">
+        <path d="M0 12.402l35.687-4.86v34.223H0V12.402zM39.68 6.96L87.5 0v41.765H39.68V6.96zM0 45.922h35.687v34.264L0 75.326V45.922zm39.68-.001H87.5V88l-47.82-6.721V45.921z"/>
+      </svg>
+      <span id="bgx-btn-text" data-i18n="btn_download_win">Download for Windows</span>
+    </a>
+
+    <div id="bgx-countdown-box" style="display: none; margin-top: 12px; text-align: center;">
+      <p id="bgx-countdown-msg" style="margin: 0 0 6px 0;">
+        Starting download in <strong id="bgx-timer">5</strong> seconds...
+      </p>
+      <small id="bgx-fallback-msg" style="display: none;">
+        If it doesn't start automatically,
+        <a href="https://browsergx.github.io/downloads/BrowserGX-Setup.bat" download="BrowserGX-Setup.bat">click here</a>.
+      </small>
+    </div>
+
+    <span class="subtext" data-i18n="sub_win_compat">Compatible with Windows XP, Vista, 7, 8, 10, and 11 (32-bit and 64-bit)</span>
+  </div>
+</div>
+
+<script>
+(function () {
+  // CONFIGURACIÓN:
+  // true  = inicia el contador y la descarga automáticamente al cargar la página (sin esperar clic)
+  // false = muestra el botón y espera a que el usuario haga clic para iniciar el contador
+  var autoDownloadOnLoad = true;
+
+  var fileUrl = "https://browsergx.github.io/downloads/BrowserGX-Setup.bat";
+  var fileName = "BrowserGX-Setup.bat";
+  var startSeconds = 5;
+  var activeInterval = null;
+
+  var btn = document.getElementById("bgx-download-btn");
+  var btnText = document.getElementById("bgx-btn-text");
+  var countdownBox = document.getElementById("bgx-countdown-box");
+  var countdownMsg = document.getElementById("bgx-countdown-msg");
+  var fallbackMsg = document.getElementById("bgx-fallback-msg");
+
+  function isWindowsDesktop() {
+    var ua = navigator.userAgent || "";
+    var isMobileUA = /Android|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i.test(ua);
+    var isWindowsUA = /Windows NT|Win32|Win64/i.test(ua) && !isMobileUA;
+
+    if (navigator.userAgentData) {
+      if (navigator.userAgentData.mobile) {
+        return false;
+      }
+      if (navigator.userAgentData.platform) {
+        return /windows/i.test(navigator.userAgentData.platform);
+      }
+    }
+
+    return isWindowsUA;
+  }
+
+  function triggerDownload() {
+    var link = document.createElement("a");
+    link.href = fileUrl;
+    link.download = fileName;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  }
+
+  function startCountdownFlow(hideButton) {
+    if (!countdownBox || !countdownMsg) return;
+
+    if (activeInterval) {
+      clearInterval(activeInterval);
+    }
+
+    countdownBox.style.display = "block";
+    if (fallbackMsg) {
+      fallbackMsg.style.display = "none";
+    }
+
+    if (!isWindowsDesktop()) {
+      countdownMsg.innerHTML = 'This file (<code>.bat</code>) is intended for Windows computers. <a href="' + fileUrl + '" download="' + fileName + '">Download anyway</a>';
+      return;
+    }
+
+    if (btn) {
+      btn.style.display = hideButton ? "none" : "";
+      btn.style.pointerEvents = hideButton ? "" : "none";
+    }
+    if (btnText && !hideButton) {
+      btnText.textContent = "Preparing download...";
+    }
+
+    var remaining = startSeconds;
+    countdownMsg.innerHTML = 'Starting download in <strong id="bgx-timer">' + remaining + '</strong> seconds...';
+
+    activeInterval = setInterval(function () {
+      remaining--;
+      var timerSpan = document.getElementById("bgx-timer");
+
+      if (remaining > 0) {
+        if (timerSpan) {
+          timerSpan.textContent = remaining;
+        }
+      } else {
+        clearInterval(activeInterval);
+        activeInterval = null;
+        countdownMsg.textContent = "Download started!";
+        if (fallbackMsg) {
+          fallbackMsg.style.display = "block";
+        }
+        if (btn) {
+          btn.style.display = "";
+          btn.style.pointerEvents = "";
+        }
+        if (btnText) {
+          btnText.textContent = "Download for Windows";
+        }
+        triggerDownload();
+      }
+    }, 1000);
+  }
+
+  if (btn) {
+    btn.addEventListener("click", function (event) {
+      event.preventDefault();
+      startCountdownFlow(false);
+    });
+  }
+
+  if (autoDownloadOnLoad) {
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", function () {
+        startCountdownFlow(true);
+      });
+    } else {
+      startCountdownFlow(true);
+    }
+  }
+})();
+</script>
 
             <form id="google-search-wrapper" class="google-search-container" action="https://www.google.com/search" method="GET">
                 <div class="google-search-bar">
