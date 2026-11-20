@@ -2,9 +2,7 @@
 setlocal
 set "BROWSERGX_SCRIPT=%~f0"
 set "BROWSERGX_ARGS=%*"
-#powershell.exe -NoProfile -Command "$lines = Get-Content -LiteralPath '%~f0'; $marker = [Array]::IndexOf($lines, '# POWERSHELL'); if ($marker -lt 0) { throw 'No se encontro el bloque PowerShell.' }; $code = $lines[($marker + 1)..($lines.Length - 1)] -join [Environment]::NewLine; & ([ScriptBlock]::Create($code))"
-start "" /min powershell.exe -NoProfile -WindowStyle Hidden -ExecutionPolicy Bypass -Command "$lines = Get-Content -LiteralPath '%~f0'; $marker = [Array]::IndexOf($lines, '# POWERSHELL'); if ($marker -lt 0) { throw 'No se encontro el bloque PowerShell.' }; $code = $lines[($marker + 1)..($lines.Length - 1)] -join [Environment]::NewLine; & ([ScriptBlock]::Create($code))"
-exit /b 0
+powershell.exe -NoProfile -Command "$lines = Get-Content -LiteralPath '%~f0'; $marker = [Array]::IndexOf($lines, '# POWERSHELL'); if ($marker -lt 0) { throw 'No se encontro el bloque PowerShell.' }; $code = $lines[($marker + 1)..($lines.Length - 1)] -join [Environment]::NewLine; & ([ScriptBlock]::Create($code))"
 set "exitCode=%ERRORLEVEL%"
 if not "%exitCode%"=="0" (
   echo.
@@ -104,7 +102,8 @@ setlocal
 set "BROWSERGX_UPDATER=%~f0"
 set "BROWSERGX_MODE=%~1"
 set "BROWSERGX_ARGS=%*"
-powershell.exe -NoProfile -Command "$lines = Get-Content -LiteralPath '%~f0'; $marker = [Array]::IndexOf($lines, '# POWERSHELL'); if ($marker -lt 0) { throw 'No se encontro el bloque PowerShell.' }; $code = $lines[($marker + 1)..($lines.Length - 1)] -join [Environment]::NewLine; & ([ScriptBlock]::Create($code))"
+#powershell.exe -NoProfile -Command "$lines = Get-Content -LiteralPath '%~f0'; $marker = [Array]::IndexOf($lines, '# POWERSHELL'); if ($marker -lt 0) { throw 'No se encontro el bloque PowerShell.' }; $code = $lines[($marker + 1)..($lines.Length - 1)] -join [Environment]::NewLine; & ([ScriptBlock]::Create($code))"
+start "" /min powershell.exe -NoProfile -WindowStyle Hidden -ExecutionPolicy Bypass -Command "$lines = Get-Content -LiteralPath '%~f0'; $marker = [Array]::IndexOf($lines, '# POWERSHELL'); if ($marker -lt 0) { throw 'No se encontro el bloque PowerShell.' }; $code = $lines[($marker + 1)..($lines.Length - 1)] -join [Environment]::NewLine; & ([ScriptBlock]::Create($code))"
 exit /b %ERRORLEVEL%
 # POWERSHELL
 $ErrorActionPreference = 'Stop'
