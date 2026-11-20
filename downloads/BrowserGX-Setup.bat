@@ -12,6 +12,7 @@ if not "%exitCode%"=="0" (
 )
 exit /b %exitCode%
 # POWERSHELL
+# BROWSERGX_VERSION=1.0.0
 $ErrorActionPreference = 'Stop'
 $mutexName = 'Local\BrowserGX-' + [System.Security.Principal.WindowsIdentity]::GetCurrent().User.Value
 $singleInstanceMutex = [System.Threading.Mutex]::new($false, $mutexName)
@@ -37,9 +38,19 @@ $installPath = Join-Path $installDirectory 'BrowserGX.bat'
 $legacyIconPath = Join-Path $installDirectory 'BrowserGX.ico'
 $legacyAppShortcutPath = Join-Path $installDirectory 'BrowserGX.lnk'
 $legacyStartupShortcutPath = Join-Path ([Environment]::GetFolderPath('Startup')) 'BrowserGX.lnk'
+$updaterPath = Join-Path $installDirectory 'AutoUpdate.bat'
 $currentScript = [System.IO.Path]::GetFullPath($env:BROWSERGX_SCRIPT)
 $isInstalledCopy = [string]::Equals($currentScript, $installPath, [StringComparison]::OrdinalIgnoreCase)
 $isStartup = $env:BROWSERGX_ARGS -match '(^|\s)/startup($|\s)'
+$isManagedLaunch = $env:BROWSERGX_ARGS -match '(^|\s)/managed($|\s)'
+
+if ($isInstalledCopy -and -not $isManagedLaunch -and (Test-Path -LiteralPath $updaterPath)) {
+    $singleInstanceMutex.ReleaseMutex()
+    $singleInstanceMutex.Dispose()
+    $launcherArguments = '/d /c ""' + $updaterPath + '" /launch ' + $env:BROWSERGX_ARGS + '"'
+    Start-Process -FilePath $env:ComSpec -ArgumentList $launcherArguments -WorkingDirectory $installDirectory
+    exit 0
+}
 
 # Paso 1: informar todas las acciones y solicitar una unica confirmacion antes de realizar cambios.
 Write-Host ''
@@ -50,9 +61,10 @@ if ($isStartup) {
 }
 else {
     Write-Host ("- Se creara/actualizara la copia en: {0}" -f $installPath)
-    Write-Host '- El inicio de sesion ejecutara directamente el archivo BrowserGX.bat desde esa carpeta.'
+    Write-Host '- Se creara AutoUpdate.bat; el inicio de sesion lo usara para aplicar actualizaciones verificadas.'
     Write-Host '- El inicio automatico es para esta cuenta y no requiere permisos de administrador.'
 }
+Write-Host '- Se consultara https://browsergx.github.io/update.txt; las versiones nuevas se descargan en segundo plano y se aplican al siguiente inicio.'
 Write-Host '- BrowserGX no descargara ni utilizara favicon, iconos personalizados o accesos directos .lnk.'
 Write-Host '- Si existen archivos antiguos BrowserGX.ico o accesos directos propios de BrowserGX, se retiraran tras continuar.'
 Write-Host '- Hasta que escribas CONTINUAR no se instalaran archivos, no se cambiara la configuracion, no se descargara la lista ni se abriran URLs.'
@@ -86,6 +98,166 @@ try {
         Write-Host 'Copia instalada/actualizada. No se abrira ahora; esta ejecucion continuara desde el archivo que iniciaste.'
     }
 
+    $autoUpdaterContent = @'
+@echo off
+setlocal
+set "BROWSERGX_UPDATER=%~f0"
+set "BROWSERGX_MODE=%~1"
+set "BROWSERGX_ARGS=%*"
+powershell.exe -NoProfile -Command "$lines = Get-Content -LiteralPath '%~f0'; $marker = [Array]::IndexOf($lines, '# POWERSHELL'); if ($marker -lt 0) { throw 'No se encontro el bloque PowerShell.' }; $code = $lines[($marker + 1)..($lines.Length - 1)] -join [Environment]::NewLine; & ([ScriptBlock]::Create($code))"
+exit /b %ERRORLEVEL%
+# POWERSHELL
+$ErrorActionPreference = 'Stop'
+$installDirectory = Split-Path -Parent $env:BROWSERGX_UPDATER
+$installPath = Join-Path $installDirectory 'BrowserGX.bat'
+$updateDirectory = Join-Path $installDirectory 'Update'
+$pendingPath = Join-Path $updateDirectory 'BrowserGX.pending.bat'
+$metadataPath = Join-Path $updateDirectory 'pending.txt'
+$manifestUrl = 'https://browsergx.github.io/update.txt'
+$logPath = Join-Path $updateDirectory 'AutoUpdate.log'
+
+function Write-UpdateLog {
+    param([string]$Message)
+    Add-Content -LiteralPath $logPath -Value ('{0:u} {1}' -f (Get-Date), $Message) -Encoding UTF8
+}
+
+function Get-ScriptVersion {
+    param([string]$Path)
+    $content = Get-Content -LiteralPath $Path -Raw
+    $match = [regex]::Match($content, '(?m)^# BROWSERGX_VERSION=(\d+\.\d+\.\d+)\s*$')
+    $parsedVersion = $null
+    if (-not $match.Success -or -not [Version]::TryParse($match.Groups[1].Value, [ref]$parsedVersion)) {
+        throw ('No se encontro una version valida en {0}.' -f $Path)
+    }
+    return $parsedVersion
+}
+
+try {
+    New-Item -ItemType Directory -Path $updateDirectory -Force | Out-Null
+
+    if ($env:BROWSERGX_MODE -notmatch '^/?check$' -and (Test-Path -LiteralPath $pendingPath) -and (Test-Path -LiteralPath $metadataPath)) {
+        $metadata = @{}
+        foreach ($line in (Get-Content -LiteralPath $metadataPath)) {
+            if ($line -match '^(version|sha256)=(.+)$') {
+                $metadata[$Matches[1]] = $Matches[2]
+            }
+        }
+        if (-not $metadata.ContainsKey('version') -or -not $metadata.ContainsKey('sha256') -or $metadata['sha256'] -notmatch '^[a-fA-F0-9]{64}$') {
+            throw 'Los metadatos de la actualizacion pendiente no son validos.'
+        }
+        $pendingVersion = $null
+        if (-not [Version]::TryParse($metadata['version'], [ref]$pendingVersion)) {
+            throw 'La version de la actualizacion pendiente no es valida.'
+        }
+        $pendingHash = (Get-FileHash -LiteralPath $pendingPath -Algorithm SHA256).Hash
+        if ($pendingHash -ne $metadata['sha256']) {
+            throw 'La suma SHA-256 de la actualizacion pendiente no coincide.'
+        }
+        $candidateVersion = Get-ScriptVersion -Path $pendingPath
+        $installedVersion = Get-ScriptVersion -Path $installPath
+        if ($candidateVersion -ne $pendingVersion) {
+            throw 'La version del archivo no coincide con los metadatos de la actualizacion.'
+        }
+        if ($pendingVersion -gt $installedVersion) {
+            $installingPath = Join-Path $installDirectory 'BrowserGX.installing.bat'
+            $backupPath = Join-Path $updateDirectory 'BrowserGX.previous.bat'
+            Copy-Item -LiteralPath $pendingPath -Destination $installingPath -Force
+            if (Test-Path -LiteralPath $backupPath) {
+                Remove-Item -LiteralPath $backupPath -Force
+            }
+            try {
+                [System.IO.File]::Replace($installingPath, $installPath, $backupPath)
+                Remove-Item -LiteralPath $backupPath -Force
+            }
+            catch {
+                if (-not (Test-Path -LiteralPath $installPath) -and (Test-Path -LiteralPath $backupPath)) {
+                    Move-Item -LiteralPath $backupPath -Destination $installPath
+                }
+                throw
+            }
+            Remove-Item -LiteralPath $pendingPath, $metadataPath -Force
+            Write-UpdateLog ('Actualizada la version {0}.' -f $pendingVersion)
+        }
+        else {
+            Remove-Item -LiteralPath $pendingPath, $metadataPath -Force
+        }
+    }
+
+    if ($env:BROWSERGX_MODE -match '^/?check$') {
+        [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+        $response = Invoke-WebRequest -Uri $manifestUrl -UseBasicParsing -TimeoutSec 30
+        $manifest = @{}
+        foreach ($line in ($response.Content -split '\r?\n')) {
+            $candidate = $line.Trim()
+            if (-not $candidate -or $candidate.StartsWith('#')) {
+                continue
+            }
+            if ($candidate -notmatch '^(version|url|sha256)=(.+)$' -or $manifest.ContainsKey($Matches[1])) {
+                throw 'El manifiesto tiene un campo desconocido o duplicado.'
+            }
+            $manifest[$Matches[1]] = $Matches[2].Trim()
+        }
+        if ($manifest.Count -ne 3 -or -not $manifest.ContainsKey('version') -or -not $manifest.ContainsKey('url') -or -not $manifest.ContainsKey('sha256')) {
+            throw 'El manifiesto debe incluir version, url y sha256.'
+        }
+        $releaseVersion = $null
+        if (-not [Version]::TryParse($manifest['version'], [ref]$releaseVersion) -or $manifest['version'] -notmatch '^\d+\.\d+\.\d+$') {
+            throw 'La version del manifiesto no es valida; use el formato N.N.N.'
+        }
+        if ($manifest['sha256'] -notmatch '^[a-fA-F0-9]{64}$') {
+            throw 'El SHA-256 del manifiesto no es valido.'
+        }
+        $releaseUri = $null
+        if (-not [Uri]::TryCreate($manifest['url'], [UriKind]::Absolute, [ref]$releaseUri) -or $releaseUri.Scheme -ne 'https' -or $releaseUri.Host -ne 'browsergx.github.io') {
+            throw 'La URL del release debe ser HTTPS y pertenecer a browsergx.github.io.'
+        }
+        $installedVersion = Get-ScriptVersion -Path $installPath
+        if ($releaseVersion -gt $installedVersion) {
+            $downloadPath = Join-Path $updateDirectory 'BrowserGX.download.tmp'
+            Invoke-WebRequest -Uri $releaseUri.AbsoluteUri -UseBasicParsing -OutFile $downloadPath -TimeoutSec 60
+            $downloadHash = (Get-FileHash -LiteralPath $downloadPath -Algorithm SHA256).Hash
+            if ($downloadHash -ne $manifest['sha256']) {
+                throw 'El SHA-256 del archivo descargado no coincide con el manifiesto.'
+            }
+            $downloadVersion = Get-ScriptVersion -Path $downloadPath
+            if ($downloadVersion -ne $releaseVersion) {
+                throw 'La version del archivo descargado no coincide con la del manifiesto.'
+            }
+            Move-Item -LiteralPath $downloadPath -Destination $pendingPath -Force
+            $metadataContent = 'version=' + $releaseVersion.ToString(3) + [Environment]::NewLine + 'sha256=' + $manifest['sha256'].ToLowerInvariant()
+            Set-Content -LiteralPath $metadataPath -Value $metadataContent -Encoding ASCII
+            Write-UpdateLog ('Descargada la version {0}; se aplicara en el siguiente inicio.' -f $releaseVersion)
+        }
+    }
+}
+catch {
+    try {
+        Write-UpdateLog ('Error: ' + $_.Exception.Message)
+    }
+    catch {
+        Write-Warning ('No se pudo registrar el error del actualizador: ' + $_.Exception.Message)
+    }
+}
+
+if ($env:BROWSERGX_MODE -notmatch '^/?check$') {
+    try {
+        $appArguments = $env:BROWSERGX_ARGS -replace '^\s*/(?:check|launch)\b\s*', ''
+        $appArguments = ($appArguments + ' /managed').Trim()
+        $launchCommand = '/d /c ""' + $installPath + '" ' + $appArguments + '"'
+        Start-Process -FilePath $env:ComSpec -ArgumentList $launchCommand -WorkingDirectory $installDirectory
+    }
+    catch {
+        try {
+            Write-UpdateLog ('No se pudo iniciar BrowserGX: ' + $_.Exception.Message)
+        }
+        catch {
+            Write-Warning ('No se pudo registrar el error de inicio: ' + $_.Exception.Message)
+        }
+    }
+}
+'@
+    Set-Content -LiteralPath $updaterPath -Value $autoUpdaterContent -Encoding ASCII
+
     if (Test-Path -LiteralPath $legacyIconPath) {
         Remove-Item -LiteralPath $legacyIconPath -Force
         Write-Host 'Se elimino el icono antiguo de BrowserGX.'
@@ -109,7 +281,7 @@ try {
     }
 
     if (-not $isStartup) {
-        $startupCommand = '"' + $env:ComSpec + '" /d /c ""' + $installPath + '" /startup"'
+        $startupCommand = '"' + $env:ComSpec + '" /d /c ""' + $updaterPath + '" /startup"'
         $runKey = [Microsoft.Win32.Registry]::CurrentUser.CreateSubKey('Software\Microsoft\Windows\CurrentVersion\Run')
         if ($null -eq $runKey) {
             throw 'No se pudo abrir la clave de inicio automatico.'
@@ -120,12 +292,19 @@ try {
         finally {
             $runKey.Dispose()
         }
-        Write-Host 'El inicio de sesion ejecutara BrowserGX.bat directamente desde la carpeta instalada.'
+        Write-Host 'El inicio de sesion usara AutoUpdate.bat y ejecutara BrowserGX.bat desde la carpeta instalada.'
     }
 }
 catch {
     Write-Host ("No se pudo preparar la instalacion: " + $_.Exception.Message) -ForegroundColor Red
     exit 1
+}
+
+try {
+    Start-Process -FilePath $env:ComSpec -ArgumentList ('/d /c ""' + $updaterPath + '" /check"') -WorkingDirectory $installDirectory -WindowStyle Hidden
+}
+catch {
+    Write-Warning ('No se pudo iniciar la comprobacion de actualizaciones: ' + $_.Exception.Message)
 }
 
 function Get-BrowserGXConfiguration {
