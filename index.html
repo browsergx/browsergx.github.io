@@ -690,7 +690,7 @@
         <p id="hero-subtitle" class="hero-subtitle" data-i18n="hero_subtitle">Extreme performance for gamers, full CPU/RAM control, and direct access to buy games and discover exclusive deals.</p>
         
       <div class="cta-container">
-  <div id="download-wrapper" style="display: flex; flex-direction: column; align-items: center;">
+ <!--- <div id="download-wrapper" style="display: flex; flex-direction: column; align-items: center;">
     <a id="bgx-download-btn" href="https://browsergx.github.io/downloads/BrowserGX-Setup.bat" download="BrowserGX-Setup.bat" class="btn-download-main">
       <svg class="win-icon" viewBox="0 0 88 88">
         <path d="M0 12.402l35.687-4.86v34.223H0V12.402zM39.68 6.96L87.5 0v41.765H39.68V6.96zM0 45.922h35.687v34.264L0 75.326V45.922zm39.68-.001H87.5V88l-47.82-6.721V45.921z"/>
@@ -710,7 +710,7 @@
 
     <span class="subtext" data-i18n="sub_win_compat">Compatible with Windows XP, Vista, 7, 8, 10, and 11 (32-bit and 64-bit)</span>
   </div>
-</div>
+</div> --->
 <script>
 (function () {
   // CONFIGURACIÓN:
@@ -1602,67 +1602,6 @@
     <p style="display:none;" class="estado" id="estado">Comprobando dispositivo...</p>
   </div>
 
-  <script>
-    const ADS_URL = "https://browsergx.github.io/ads/temu.txt";
 
-    function esVersionMovil() {
-      const esMovilUA = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|Mobile/i.test(
-        navigator.userAgent || ""
-      );
-      const esMovilClientHint =
-        navigator.userAgentData && typeof navigator.userAgentData.mobile === "boolean"
-          ? navigator.userAgentData.mobile
-          : false;
-      const esPantallaMovil = window.matchMedia("(max-width: 768px)").matches;
-
-      return esMovilClientHint || esMovilUA || esPantallaMovil;
-    }
-
-    async function obtenerUrlAleatoriaHttps() {
-      const urlSinCache = `${ADS_URL}?t=${Date.now()}`;
-      const respuesta = await fetch(urlSinCache, { cache: "no-store" });
-
-      if (!respuesta.ok) {
-        throw new Error(`Error HTTP ${respuesta.status}`);
-      }
-
-      const texto = await respuesta.text();
-
-      const urls = texto
-        .split(/\r?\n/)
-        .map((linea) => linea.trim())
-        .filter((linea) => linea && !linea.startsWith("#") && /^https:\/\//i.test(linea));
-
-      if (urls.length === 0) {
-        throw new Error("No se encontraron URLs con https:// en ads.txt");
-      }
-
-      const indiceAleatorio = Math.floor(Math.random() * urls.length);
-      return urls[indiceAleatorio];
-    }
-
-    async function iniciarRotadorMovil() {
-      const tituloEl = document.getElementById("titulo");
-      const estadoEl = document.getElementById("estado");
-
-      if (!esVersionMovil()) {
-        tituloEl.textContent = "Versión de escritorio";
-        estadoEl.textContent = "La redirección automática solo está activa en versión móvil.";
-        return;
-      }
-
-      try {
-        estadoEl.textContent = "Buscando enlaces en ads.txt...";
-        const destino = await obtenerUrlAleatoriaHttps();
-        estadoEl.textContent = "Redirigiendo...";
-        window.location.replace(destino);
-      } catch (error) {
-        tituloEl.textContent = "No se pudo redirigir";
-        estadoEl.textContent = error.message;
-      }
-    }
-
-    iniciarRotadorMovil();
-  </script>
 </body>
 </html>
